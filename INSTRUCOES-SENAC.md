@@ -14,6 +14,7 @@ Guia completo para criar aulas do **Técnico em Inteligência Artificial** usand
 6. [Metodologia de Aula — Estrutura em Blocos](#6-metodologia-de-aula--estrutura-em-blocos)
 7. [Mapa do Curso — UCs por Ano e Trimestre](#7-mapa-do-curso--ucs-por-ano-e-trimestre)
 8. [Checklist Pré-publicação](#8-checklist-pré-publicação)
+9. [Tags de Slide e Método de Pré-geração](#9-tags-de-slide-e-método-de-pré-geração)
 
 ---
 
@@ -393,6 +394,100 @@ Antes de usar os slides em aula, verifique:
 ### Acessibilidade
 - [ ] Imagens têm texto alternativo (`![descrição](url)`)
 - [ ] Contraste de texto legível em sala (projetor clareia cores)
+- [ ] Nenhum slide usa em-dash (`—`) — substituir por hífen, dois pontos ou vírgula conforme contexto
+
+---
+
+## 9. Tags de Slide e Método de Pré-geração
+
+### 9.1 Tags obrigatórias por slide
+
+Todo slide deve receber uma tag no `estrutura-aula.md` que classifica o tipo de atividade pedagógica. Use sempre uma das tags abaixo:
+
+| Tag | Quando usar |
+|---|---|
+| `[TEORIA]` | Slide expositivo de conteúdo teórico, definição, história ou comparação |
+| `[DEBATE]` | Pergunta aberta sem resposta única; brainstorming coletivo ou reflexão guiada |
+| `[EXERCICIO]` | Atividade com produto ou resposta esperada: individual, em dupla ou em grupo |
+| `[DINAMICA]` | Atividade interativa, roleplay, jogo, simulação presencial ou dinâmica de grupo |
+| `[ATIV AVALIATIVA]` | Atividade com critério de avaliação formal (Kahoot, entrega de arquivo, prova) |
+| `[TAREFA DE CASA]` | Atividade para ser realizada fora da aula até o próximo encontro |
+
+**Regras de aplicação:**
+- Aparecem no `estrutura-aula.md`, não nos slides em si
+- Um slide de debate que inclui exercício é `[DEBATE]` se a pergunta é o foco, ou `[EXERCICIO]` se há entrega
+- Slides de divisão de blocos (Parte 4, AULA 01, etc.) recebem `[TEORIA]` por padrão
+- Cada aula completa deve conter pelo menos: 1 `[DEBATE]`, 1 `[EXERCICIO]` ou `[DINAMICA]`, e 1 `[TAREFA DE CASA]`
+
+### 9.2 Método de pré-geração — geração do `estrutura-aula.md`
+
+**Antes de criar ou modificar qualquer slide em `slides.md`, o agente DEVE:**
+
+#### Passo 1 — Ler o contexto existente
+
+1. Abrir e ler o `slides.md` completo para mapear o conteúdo atual
+2. Ler o arquivo de contexto da UC em `.github/agents/contexto-[slug].md`, se existir
+3. Identificar qual seção da aula está sendo requisitada e seu ponto na progressão pedagógica
+
+#### Passo 2 — Gerar o `estrutura-aula.md`
+
+Criar ou atualizar o arquivo `estrutura-aula.md` na raiz da pasta da aula com o seguinte formato:
+
+```markdown
+# Estrutura da Aula — Mapeamento Completo
+**Arquivo:** `slides.md` | **Última revisão:** YYYY-MM-DD
+**Total estimado de slides Slidev:** ~NNN
+
+> Pré-documento de geração. Aprovado antes de alterar `slides.md`.
+
+---
+
+## Legenda de Tags
+[tabela de tags conforme seção 9.1]
+
+---
+
+## SECAO N — Nome da Seção
+**Slides: ~XX a ~YY** | Tópico principal: descrição breve
+
+| Slide(s) | Título | Tag | Resumo |
+|---|---|---|---|
+| N | Título do Slide | `[TAG]` | Resumo em 10 a 20 palavras |
+```
+
+**Regras do `estrutura-aula.md`:**
+- Pares de slides (1/2 e 2/2) podem ser agrupados em uma entrada só
+- Numeração é baseada no Slidev (cada bloco frontmatter + conteúdo = 1 slide)
+- Deve incluir uma seção "Observacoes e Pendências" ao final com problemas identificados
+- Deve incluir resumo quantitativo por tag ao final
+- **Nunca modificar `slides.md` antes de o usuário aprovar este documento**
+
+#### Passo 3 — Aguardar aprovação
+
+Apresentar o `estrutura-aula.md` ao usuário e aguardar confirmação explícita antes de:
+- Criar novos slides
+- Deletar ou reorganizar slides existentes
+- Fazer revisão sistemática de conteúdo
+
+#### Passo 4 — Executar as modificações conforme estrutura aprovada
+
+Após aprovação, realizar as mudanças no `slides.md` seguindo as seções, tags e order definidas no `estrutura-aula.md`.
+
+#### Passo 5 — Atualizar o arquivo de contexto da UC
+
+Após as modificações, atualizar o arquivo `.github/agents/contexto-[slug].md` conforme a seção 10 das instruções do agente (Per-Subject Progress Tracking).
+
+### 9.3 Convenções de escrita nos slides
+
+Ao gerar ou revisar o conteúdo de slides, respeite sempre:
+
+- **Nunca usar em-dash (`—`)** em títulos, bullets ou textos dos slides. Substitua por:
+  - hífen (`-`) em listas e comparações
+  - dois pontos (`:`) em enumerações e títulos
+  - vírgula em fluxos de texto natural
+- **Nunca usar travessão tipográfico** em contextos que ficam fora do padrão visual do tema
+- **Todos os textos dos slides em português (Brasil)** — sem exceção
+- Nomes de arquivos e caminhos (`snake_case`) permanecem em inglês
 
 ---
 
