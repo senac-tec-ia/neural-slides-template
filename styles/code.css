@@ -1,0 +1,77 @@
+/* Estilos para blocos de código */
+
+/* Shiki code blocks */
+.shiki {
+  @apply rounded-xl;
+  background: #1e293b !important;
+  border: 1px solid rgba(99, 102, 241, 0.6);
+  overflow-x: auto;
+}
+
+/* Line numbers */
+.slidev-code-line-numbers {
+  @apply;
+  color: #64748b;
+}
+
+/* Highlighted lines */
+.slidev-code .highlighted {
+  @apply bg-blue-500;
+  border-left: 3px solid #3b82f6;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}
+
+/* Syntax highlighting customization */
+.shiki .line {
+  @apply leading-relaxed;
+}
+
+/* Comments */
+.shiki .token.comment {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Keywords */
+.shiki .token.keyword {
+  color: #c792ea;
+}
+
+/* Strings */
+.shiki .token.string {
+  color: #c3e88d;
+}
+
+/* Functions */
+.shiki .token.function {
+  color: #82aaff;
+}
+
+/* Numbers */
+.shiki .token.number {
+  color: #f78c6c;
+}
+
+/* Variables */
+.shiki .token.variable {
+  color: #eeffff;
+}
+
+/* Code title */
+.slidev-code-title {
+  @apply px-4 py-2 text-sm font-mono rounded-t-lg;
+  background: rgba(99, 102, 241, 0.6);
+  color: #0932ff;
+  border: 1px solid rgba(99, 102, 241, 0.6);
+  border-bottom: none;
+}
+
+/* Copy button styling */
+.slidev-code-copy {
+  @apply opacity-0 transition-opacity;
+}
+
+.slidev-code-wrapper:hover .slidev-code-copy {
+  @apply opacity-100;
+}
