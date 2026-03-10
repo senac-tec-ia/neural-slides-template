@@ -1,0 +1,115 @@
+name: Sync to Platform
+
+# Triggered automatically after `npm run publish` pushes the v1.0.0 tag,
+# or manually from the Actions tab.
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Sync lesson files to course-platform
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      # ── 1. Checkout this lesson repo ───────────────────────────────────────
+      - name: Checkout lesson repo
+        uses: actions/checkout@v4
+
+      # ── 2. Parse meta.yaml (no external deps) ─────────────────────────────
+      - name: Read meta.yaml fields
+        id: meta
+        run: |
+          SLUG=$(grep '^slug:' meta.yaml | sed 's/slug://;s/[" ]//g')
+          AULA=$(grep '^aula:' meta.yaml | sed 's/aula://;s/ //g')
+          TITLE=$(grep '^title:' meta.yaml | sed 's/title://;s/^ *//;s/^"//;s/"$//')
+          STATUS=$(grep '^status:' meta.yaml | sed 's/status://;s/ //g')
+          DEPLOY_URL=$(grep '^deployUrl:' meta.yaml | sed 's/deployUrl://;s/[" ]//g')
+
+          echo "slug=$SLUG"           >> $GITHUB_OUTPUT
+          echo "aula=$AULA"           >> $GITHUB_OUTPUT
+          echo "title=$TITLE"         >> $GITHUB_OUTPUT
+          echo "status=$STATUS"       >> $GITHUB_OUTPUT
+          echo "deploy_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+
+          echo "📦 Aula $AULA — $TITLE ($SLUG)"
+
+      # ── 3. Abort if not published ──────────────────────────────────────────
+      - name: Check status
+        if: steps.meta.outputs.status != 'published'
+        run: |
+          echo "⏸ meta.yaml status = '${{ steps.meta.outputs.status }}'. Only 'published' aulas are synced."
+          exit 1
+
+      # ── 4. Push files to course-platform ──────────────────────────────────
+      - name: Sync files to senac-tecia/course-platform
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PLATFORM_REPO_TOKEN }}
+          script: |
+            const fs = require("fs")
+            const slug = "${{ steps.meta.outputs.slug }}"
+            const aula = "${{ steps.meta.outputs.aula }}"
+            const title = "${{ steps.meta.outputs.title }}"
+            const deployUrl = "${{ steps.meta.outputs.deploy_url }}"
+
+            const owner = "senac-tecia"
+            const repo  = "course-platform"
+            const basePath = `content/aulas/${slug}`
+
+            const files = [
+              "slides.md",
+              "exercicios.md",
+              "tarefa.md",
+              "meta.yaml",
+            ]
+
+            for (const file of files) {
+              if (!fs.existsSync(file)) {
+                console.log(`⏭ Skipping ${file} (not found)`)
+                continue
+              }
+
+              const content = Buffer.from(fs.readFileSync(file)).toString("base64")
+              const path = `${basePath}/${file}`
+
+              // Check if file already exists (need SHA to update)
+              let sha
+              try {
+                const { data } = await github.rest.repos.getContent({ owner, repo, path })
+                sha = data.sha
+              } catch {
+                sha = undefined // new file
+              }
+
+              await github.rest.repos.createOrUpdateFileContents({
+                owner,
+                repo,
+                path,
+                message: `feat(aulas): sync ${slug} — ${file}`,
+                content,
+                sha,
+              })
+
+              console.log(`✅ ${path}`)
+            }
+
+            console.log(`\n🎉 Aula ${aula} (${slug}) synced to course-platform.`)
+            console.log(`   Slides deploy: ${deployUrl}`)
+
+      # ── 5. Summary ─────────────────────────────────────────────────────────
+      - name: Job summary
+        run: |
+          echo "## ✅ Aula ${{ steps.meta.outputs.aula }} Synced" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| Slug | \`${{ steps.meta.outputs.slug }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Title | ${{ steps.meta.outputs.title }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deploy URL | ${{ steps.meta.outputs.deploy_url }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Platform path | \`content/aulas/${{ steps.meta.outputs.slug }}/\` |" >> $GITHUB_STEP_SUMMARY
