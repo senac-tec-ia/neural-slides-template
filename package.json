@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "slidev slides.md --open",
     "dev:demo": "slidev slides-demo.md --open",
-    "build": "slidev build slides.md",
+    "build": "slidev build slides.md --out dist",
     "export": "slidev export slides.md --format pdf --output aula-export.pdf",
-    "export:pptx": "slidev export slides.md --format pptx --output aula-export.pptx"
+    "export:pptx": "slidev export slides.md --format pptx --output aula-export.pptx",
+    "publish": "npm run build && node .github/scripts/publish.mjs"
   },
   "slidev": {
     "colorSchema": "dark"
