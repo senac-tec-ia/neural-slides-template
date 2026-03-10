@@ -1,7 +1,7 @@
 {
-  "name": "aula-03-conceitos-de-ia",
+  "name": "neural-slides-template",
   "version": "1.0.0",
-  "description": "Template de aula com o tema Neural para o Técnico em IA — Senac",
+  "description": "Template oficial do Neural Slides para o Técnico em Inteligência Artificial — Senac",
   "private": true,
   "scripts": {
     "dev": "slidev slides.md --open",

@@ -10,7 +10,7 @@ Template para criar aulas do **Técnico em Inteligência Artificial** usando o [
 ## Início Rápido
 
 ```bash
-git clone <url-deste-repo> aula-NN-nome-do-topico
+git clone https://github.com/senac-tec-ia/neural-slides-template aula-NN-nome-do-topico
 cd aula-NN-nome-do-topico
 npm install
 npm run dev
