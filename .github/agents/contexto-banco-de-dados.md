@@ -1,6 +1,6 @@
-# Contexto — Desenvolvimento de Banco de Dados (D08-UC06)
+# Contexto — Desenvolvimento de Banco de Dados (UC08)
 
-**Código:** D08-UC06  
+**Código:** UC08  
 **UC:** UC06 — Desenvolvimento de Banco de Dados  
 **Disciplina:** Banco de Dados  
 **Carga Total:** 67h (80 HA) | `T1: 26 HA (ajustado: 20) · T2: 27 HA · T3: 27 HA`
@@ -46,9 +46,9 @@
 ## Pré-requisitos dos Alunos
 
 Conceitos que os alunos já têm de outras disciplinas (relevantes para BD):
-- **CSV e planilhas:** Visto em D01-UC01 (Excel/Calc) — ponte natural para "tabelas de banco de dados"
+- **CSV e planilhas:** Visto em UC01 (Excel/Calc) — ponte natural para "tabelas de banco de dados"
 - **snake_case:** Consolidado em D01 — usar na nomenclatura de tabelas/campos
-- **Python básico:** Variáveis, tipos, operadores, def/return (A04 de D05-UC03)
+- **Python básico:** Variáveis, tipos, operadores, def/return (A04 de UC05)
 - **Conceito de dados estruturados:** Implícito no uso do Excel
 
 ---

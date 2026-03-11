@@ -1,6 +1,6 @@
-# Contexto — Fundamentos de Computação (D01-UC01)
+# Contexto — Fundamentos de Computação (UC01)
 
-**Código:** D01-UC01  
+**Código:** UC01  
 **UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
 **Disciplina:** Fundamentos de Computação  
 **Carga Total:** 34h (41 HA) | `T1: 13 HA · T2: 14 HA · T3: 14 HA`  
@@ -79,7 +79,7 @@
 > A04 consolidou: Windows profissional e terminal básico (cd, dir, mkdir, cls).
 > O próximo encontro (A05) deve entrar no Indicador 2: Word.
 > Começar por: criar documento, configurar página, formatar texto — com exemplo de relatório técnico.
-> Conectar com D02-UC01 (Inglês): nomenclatura de menus e comandos em inglês no Word.
+> Conectar com UC02 (Inglês): nomenclatura de menus e comandos em inglês no Word.
 > Conectar com snake_case já consolidado: nomear documentos corretamente ao salvar.
 > Manter o padrão de intercalação: max 2 slides de teoria → exercício imediato.
 
@@ -98,11 +98,11 @@
 
 | Conceito | Disciplina Relacionada | Observação |
 |---|---|---|
-| Vocabulário técnico em inglês (menus do Windows/Word) | D02-UC01 Inglês | Referenciar sempre ao mostrar telas |
-| GPU e paralelismo | D06-UC04 Arquitetura | Introduzido superficialmente — aprofundar lá |
-| CSV e dados estruturados | D08-UC06 Banco de Dados | Base do Calc → tabelas SQL |
-| snake_case | D05-UC03 Python | Nomenclatura já consolidada — reforçar em Python |
-| Terminal básico (cmd) | D05-UC03 Python | Pré-req. para rodar Python em terminal |
+| Vocabulário técnico em inglês (menus do Windows/Word) | UC02 Inglês | Referenciar sempre ao mostrar telas |
+| GPU e paralelismo | UC06 Arquitetura | Introduzido superficialmente — aprofundar lá |
+| CSV e dados estruturados | UC08 Banco de Dados | Base do Calc → tabelas SQL |
+| snake_case | UC05 Python | Nomenclatura já consolidada — reforçar em Python |
+| Terminal básico (cmd) | UC05 Python | Pré-req. para rodar Python em terminal |
 
 ---
 

@@ -1,6 +1,6 @@
-# Contexto — Desenvolvimento de Linguagem Python (D05-UC03)
+# Contexto — Desenvolvimento de Linguagem Python (UC05)
 
-**Código:** D05-UC03  
+**Código:** UC05  
 **UC:** UC03 — Desenvolvimento de Linguagem Python  
 **Disciplina:** Python para IA  
 **Carga Total:** 67h (80 HA) | `T1: 26 HA (ajustado: 20) · T2: 27 HA · T3: 27 HA`  
@@ -12,7 +12,7 @@
 
 | Trim. | HA Alocado | HA Dado | HA Restante |
 |---|---|---|---|
-| T1 | 20 (ajustado) | 2,5 | 17,5 |
+| T1 | 20 (ajustado) | 5,5 | 14,5 |
 | T2 | 27 | 0 | 27 |
 | T3 | 27 | 0 | 27 |
 
@@ -37,6 +37,7 @@
 | A02 | 27/02/2026 | ~0,5 | Reconhecimento do ambiente: VS Code, Google Colab, GitHub, Jupyter Notebook — onde rodar Python | Ministrada |
 | A03 | 05/03/2026 | 0 | Não trabalhada | - |
 | A04 | 06/03/2026 | ~2 | Variáveis, tipos (str/int/float/bool), `print()`, `input()`, operadores aritmeticos, `if/elif/else`, `def/return`, ecossistema Python (Jupyter/Colab, pip, SQL, Markdown, JSON, YAML) | Ministrada |
+| A05 | 12/03/2026 | ~3 | Loops: `for`, `while`, `break`, `continue`; Listas: criação, `append`, indexação, `len`, `max`, `min`; Dinâmica: purificador de dataset com filtro de tipo | Ministrada |
 
 ---
 
@@ -65,8 +66,8 @@
 
 | Seq. | Tópico | HA | Ind. |
 |---|---|---|---|
-| 1 | Loops: `for`, `while`, `break`, `continue` | 3 | 1 |
-| 2 | Listas e dicionários: criação, indexação, `append`, `for` sobre listas | 3 | 1 |
+| 1 | ~~Loops: `for`, `while`, `break`, `continue`~~ | ~~3~~ | ~~1~~ | **CONCLUÍDO em A05** |
+| ~~Listas: criação, indexação, `append`, `for` sobre listas~~ | ~~3~~ | ~~1~~ | **CONCLUÍDO em A05** |
 | 3 | Funções avançadas: parâmetros default, `*args`, docstrings, escopo | 2 | 1 |
 | 4 | Módulos e importações: `import`, `random`, `math`, `os` | 2 | 2 |
 | 5 | Leitura e escrita de arquivos: `open()`, `read()`, `write()`, `.csv` | 2 | 2 |
@@ -77,11 +78,10 @@
 
 ## Recomendações para o Próximo Encontro
 
-> A04 consolidou: variáveis, tipos, print, input, operadores, condicionais, def/return, ecossistema.
-> A05 (próxima aula com D05) deve começar diretamente em loops (for/while).
-> Contexto IA: iterar sobre lista de tokens, notas de modelos, resultados de classificação.
-> Não rever condicionais — incorporar if/else dentro dos loops como uso natural.
-> Manter padrão: 1 slide teoria + exercício imediato. Dinâmicas em dupla para código.
+> A05 consolidou: for, while, break, continue, listas (append, indexação, len, max, min).
+> A06 (próximo encontro com D05) deve continuar com funções avançadas ou módulos.
+> Não rever for/while/listas no mesmo nível — aprofundar ou combinar com outras estruturas.
+> Considerar list comprehension ou dicionários como próximo bloco estrutural.
 
 ---
 

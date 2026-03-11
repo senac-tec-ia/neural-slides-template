@@ -1,6 +1,6 @@
-# Contexto — Arquitetura de Computadores e GPU (D06-UC04)
+# Contexto — Arquitetura de Computadores e GPU (UC06)
 
-**Código:** D06-UC04  
+**Código:** UC06  
 **UC:** UC04 — Reconhecimento de Modelos de Arquitetura de Computadores e GPU  
 **Disciplina:** Arquitetura de Computadores e GPU  
 **Carga Total:** 33h (40 HA) | `T1: 13 HA (ajustado: 11) · T2: 14 HA · T3: 13 HA`
@@ -80,7 +80,7 @@
 
 ---
 
-## Conexões com D01-UC01 (Fundamentos de Computação)
+## Conexões com UC01 (Fundamentos de Computação)
 
 - Em A01 de D01, o modelo E-P-S (Entrada-Processamento-Saída) foi apresentado como base
 - Os componentes CPU/GPU/RAM/SSD se encaixam dentro do "P" (Processamento) desse modelo

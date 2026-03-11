@@ -1,6 +1,6 @@
-# Contexto — Fundamentos Matemáticos para Computação e IA (D03-UC01)
+# Contexto — Fundamentos Matemáticos para Computação e IA (UC03)
 
-**Código:** D03-UC01  
+**Código:** UC03  
 **UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
 **Disciplina:** Fundamentos Matemáticos para Computação e IA  
 **Carga Total:** 33h (40 HA) | `T1: 13 HA · T2: 14 HA · T3: 13 HA`
@@ -11,7 +11,7 @@
 
 | Trim. | HA Alocado | HA Dado | HA Restante |
 |---|---|---|---|
-| T1 | 13 | 0 | 13 |
+| T1 | 13 | 2 | 11 |
 | T2 | 14 | 0 | 14 |
 | T3 | 13 | 0 | 13 |
 
@@ -38,8 +38,7 @@
 | A02 | 27/02/2026 | 0 | Não trabalhada |
 | A03 | 05/03/2026 | 0 | Não trabalhada |
 | A04 | 06/03/2026 | 0 | Não trabalhada |
-
-**Disciplina não iniciada até A04. Iniciar o quanto antes — T1 termina 15/05.**
+| A05 | 12/03/2026 | ~2 | **INICIO:** Aritmética computacional (int, float, `//`, `%`, `**`, PEMDAS), Álgebra: variável vs incognita, equação linear `y = 2x + 5`, função `calcular_y(x)` em Python |
 
 ---
 
@@ -69,7 +68,14 @@
 
 ## Vocabulário Matemático Introduzido
 
-*Nenhum ainda — a disciplina não foi iniciada.*
+| `int` | Número inteiro em Python | A05 |
+| `float` | Número decimal em Python | A05 |
+| divisão inteira | `//` descarta a vírgula | A05 |
+| resto (módulo) | `%` retorna o sobra da divisão | A05 |
+| potência | `**` eleva à potência | A05 |
+| PEMDAS | ordem de operações: potência, mult, div, adição, subtração | A05 |
+| variável (matemática) | incógnita em álgebra, diferente de atribuição Python | A05 |
+| equação linear | `y = ax + b` | A05 |
 
 ---
 
@@ -77,11 +83,11 @@
 
 | Conceito | Quando Usar | Disciplina Relacionada |
 |---|---|---|
-| Operadores aritméticos | Na primeira aula — alunos já viram em Python A04 | D05-UC03 Python |
-| Lógica booleana | Após operadores | D05-UC03 Python (`and`, `or`, `not`) |
-| Funções matemáticas | Após conjuntos | D09-UC07 Estatística (pré-req. para funções lin/exp/log) |
-| Matrizes | Após funções | D05-UC03 Python (numpy), D08 (tabelas SQL) |
-| Probabilidade (T2) | Início do T2 | D04-UC02 (modelos probabilísticos de IA) |
+| Operadores aritméticos | Na primeira aula — alunos já viram em Python A04 | UC05 Python |
+| Lógica booleana | Após operadores | UC05 Python (`and`, `or`, `not`) |
+| Funções matemáticas | Após conjuntos | UC09 Estatística (pré-req. para funções lin/exp/log) |
+| Matrizes | Após funções | UC05 Python (numpy), D08 (tabelas SQL) |
+| Probabilidade (T2) | Início do T2 | UC04 (modelos probabilísticos de IA) |
 
 ---
 
@@ -90,4 +96,4 @@
 1. **Primeira aula:** Começar pelo tópico 1 da sequência acima — verificar se D05 A04 já aconteceu (sim) para referenciar os operadores já vistos
 2. **Todo conceito matemático tem código Python** ao lado — é inviolável para esta disciplina neste contexto
 3. **Contexto IA always:** datasets, pixels, scores, pesos de modelos — nunca exercícios sem contexto tecnológico
-4. **Verificar D09-UC07** antes de avançar para funções — coordenar para não repetir
+4. **Verificar UC09** antes de avançar para funções — coordenar para não repetir

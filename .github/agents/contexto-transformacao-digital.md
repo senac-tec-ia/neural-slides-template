@@ -1,6 +1,6 @@
-# Contexto — Transformação Digital e Estratégias de Informação para IA (D07-UC05)
+# Contexto — Transformação Digital e Estratégias de Informação para IA (UC07)
 
-**Código:** D07-UC05  
+**Código:** UC07  
 **UC:** UC05 — Compreensão sobre a Transformação Digital  
 **Disciplina:** Transformação Digital e Estratégias de Informação  
 **Carga Total:** 67h (80 HA) | `T1: 26 HA (ajustado: 20) · T2: 27 HA · T3: 27 HA`

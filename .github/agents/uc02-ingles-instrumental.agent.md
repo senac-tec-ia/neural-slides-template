@@ -1,15 +1,15 @@
 ```chatagent
 ---
-description: Agente para geração de slides e exercícios de Inglês Instrumental aplicado à Computação (D02-UC01) do curso Técnico em IA — Senac. Lê contexto-ingles-instrumental.md antes de gerar, evita reintroduzir vocabulário já consolidado, e integra com D01-UC01 (Fundamentos de Computação) para contextualizar interfaces em inglês.
+description: Agente para geração de slides e exercícios de Inglês Instrumental aplicado à Computação (UC02) do curso Técnico em IA — Senac. Lê contexto-ingles-instrumental.md antes de gerar, evita reintroduzir vocabulário já consolidado, e integra com UC01 (Fundamentos de Computação) para contextualizar interfaces em inglês.
 tools:
   - search/codebase
   - edit/editFiles
 ---
 ```
 
-# Agente D02-UC01 — Inglês Instrumental
+# Agente UC02 — Inglês Instrumental
 
-**Código:** D02-UC01  
+**Código:** UC02  
 **UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
 **Carga Total:** 33h (40 HA)  
 **Peso no dia:** Leve (1 HA/bloco — sempre no Bloco 3)  
@@ -82,8 +82,8 @@ tools:
 
 1. Gere `estrutura-aula.md` (map T→E→D→TC)
 2. Aguarde aprovação
-3. Gere `A{NN}-D02-UC01.md` (slides)
-4. Gere `A{NN}-D02-UC01-exercicios.md` (exercícios)
+3. Gere `A{NN}-UC02.md` (slides)
+4. Gere `A{NN}-UC02-exercicios.md` (exercícios)
 5. Atualize `contexto-ingles-instrumental.md`
 
 ---
@@ -92,7 +92,7 @@ tools:
 
 | Conceito | Disciplina | Observação |
 |---|---|---|
-| Interfaces Windows/Word | D01-UC01 Fund. Computação | Termos em inglês das interfaces |
-| Mensagens de erro | D05-UC03 Python | Erros são sempre em inglês |
-| Vocabulário de IA | D04-UC02 Conceitos de IA | Reforçar após introdução lá |
-| Documentação de banco de dados | D08-UC06 Banco de Dados | SQL keywords em inglês |
+| Interfaces Windows/Word | UC01 Fund. Computação | Termos em inglês das interfaces |
+| Mensagens de erro | UC05 Python | Erros são sempre em inglês |
+| Vocabulário de IA | UC04 Conceitos de IA | Reforçar após introdução lá |
+| Documentação de banco de dados | UC08 Banco de Dados | SQL keywords em inglês |

@@ -1,6 +1,6 @@
-# Contexto — Inglês Instrumental (D02-UC01)
+# Contexto — Inglês Instrumental (UC02)
 
-**Código:** D02-UC01  
+**Código:** UC02  
 **UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
 **Disciplina:** Inglês Instrumental  
 **Carga Total:** 33h (40 HA) | `T1: 13 HA · T2: 14 HA · T3: 13 HA`

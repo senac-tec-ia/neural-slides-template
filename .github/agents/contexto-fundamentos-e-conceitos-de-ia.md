@@ -1,6 +1,6 @@
-# Contexto — Fundamentos e Conceitos de IA (D04-UC02)
+# Contexto — Fundamentos e Conceitos de IA (UC04)
 
-**Código:** D04-UC02  
+**Código:** UC04  
 **UC:** UC02 — Fundamentos e Conceitos de IA  
 **Disciplina:** Fundamentos e Conceitos de Inteligência Artificial  
 **Carga Total:** 33h (41 HA) | `T1: 13 HA (ajustado: 11) · T2: 14 HA · T3: 14 HA`

@@ -24,35 +24,39 @@ Guia operacional para gerar uma aula completa usando o sistema de agentes Neural
 USUÁRIO
    │
    ▼
-@slidev-senac (coordenador)
+@produtor-aula (coordenador)
    │  lê PROJETO-AULAS-1-TRIMESTRE.md + contexto-*.md
    │
-   ├── @orquestrador-1ano
+   ├── @planejador-trimestre
    │       "Qual a composição de A05?" → calendário + HA restante
    │
    ├── @d01 a @d09 (especialistas por disciplina)
    │       "O que ensinar nessa disciplina em A05?" → Handoff Card
    │
-   ├── @slidev-writer
+   ├── @autor-slides
    │       Handoff Card(s) → estrutura-aula.md → (aprovação) → slides.md
+   │           └── @editor-slides (refinamento pós-geração)
+   │                   --mode=review: revisa slide a slide, emite relatório
+   │                   --mode=edit:   executa as decisões aprovadas
    │
-   ├── @exercise-builder
+   ├── @autor-exercicios
    │       Handoff Card(s) → exercicios.md + tarefa.md
    │
-   └── @verificador-estrutura-aula
-           slides.md → auditoria T→E→D→TC → correge se necessário
+   └── @auditor-estrutura
+           slides.md → auditoria T→E→D→TC → corrige se necessário
 ```
 
 ### Responsabilidade de cada agente
 
 | Agente | Produz | NÃO produz |
 |---|---|---|
-| `@slidev-senac` | Coordena o fluxo completo | nada diretamente |
-| `@orquestrador-1ano` | Composição do dia (HA por disciplina) | slides |
+| `@produtor-aula` | Coordena o fluxo completo | nada diretamente |
+| `@planejador-trimestre` | Composição do dia (HA por disciplina) | slides |
 | `@d01` a `@d09` | Handoff Card da sua disciplina | slides, exercícios |
-| `@slidev-writer` | slides.md ([TEORIA][DEBATE][DINAMICA]) | exercicios.md |
-| `@exercise-builder` | exercicios.md + tarefa.md | slides.md |
-| `@verificador-estrutura-aula` | audit + correção estrutural | conteúdo novo |
+| `@autor-slides` | slides.md ([TEORIA][DEBATE][DINAMICA]) | exercicios.md |
+| `@autor-exercicios` | exercicios.md + tarefa.md | slides.md |
+| `@editor-slides` | slides.md modificado (por instrução explícita) | aulas do zero |
+| `@auditor-estrutura` | audit + correção estrutural automática | conteúdo novo |
 
 ---
 
@@ -73,7 +77,7 @@ code .
 ### Passo 1 — Calcular composição do dia
 
 ```
-@orquestrador-1ano
+@planejador-trimestre
 "Calcule a composição para A05 (12/03/2026, quinta-feira)"
 ```
 
@@ -84,22 +88,22 @@ O orquestrador retorna: quais disciplinas + quantos HA cada uma, com justificati
 Para cada disciplina na composição, invocar o agente correspondente:
 
 ```
-@d05-uc03-python-para-ia
+@uc05-python-para-ia
 "Gere o Handoff Card para A05 com base no contexto atual"
 
-@d07-uc05-transformacao-digital
+@uc07-transformacao-digital
 "Gere o Handoff Card para A05 com base no contexto atual"
 
-@d02-uc01-ingles-instrumental
+@uc02-ingles-instrumental
 "Gere o Handoff Card para A05 com base no contexto atual"
 ```
 
 Cada agente lê seu `contexto-*.md` e devolve um Handoff Card com: consolidado, o que ensinar hoje, exercícios N1→N4, cross-refs.
 
-### Passo 3 — Gerar estrutura da aula (writer)
+### Passo 3 — Gerar estrutura da aula (autor-slides)
 
 ```
-@slidev-writer
+@autor-slides
 "Gere a estrutura-aula.md para A05 com os seguintes Handoff Cards:
 [colar Handoff Cards aqui]"
 ```
@@ -123,19 +127,35 @@ O writer executa e preenche `slides.md` conforme a estrutura aprovada.
 ### Passo 6 — Gerar exercicios.md e tarefa.md
 
 ```
-@exercise-builder
+@autor-exercicios
 "Gere os exercícios para A05 com os seguintes Handoff Cards:
 [colar Handoff Cards aqui]"
+```
+
+### Passo 6b — Refinar slides (opcional)
+
+Se quiser revisar o conteúdo gerado antes de validar a estrutura:
+
+```
+@editor-slides --mode=review
+"Revise os slides de A05 — apresente opções slide a slide"
+```
+
+Após receber o relatório de decisões, executar:
+
+```
+@editor-slides --mode=edit
+"Execute as decisões do relatório acima"
 ```
 
 ### Passo 7 — Validar estrutura final
 
 ```
-@verificador-estrutura-aula
+@auditor-estrutura
 "Valide A05 — verifique T→E→D→TC e tags"
 ```
 
-Se encontrar violações, o verificador corrige automaticamente e loga as alterações no final do `estrutura-aula.md`.
+Se encontrar violações, o auditor corrige automaticamente e loga as alterações no final do `estrutura-aula.md`.
 
 ### Passo 8 — Commit e sync
 
@@ -153,7 +173,7 @@ git commit -m "feat(A05): lesson content — Python loops + Transformação Digi
 
 ## 3. O Handoff Card — contrato entre camadas
 
-O Handoff Card é o **output de cada agente disciplinar** e o **input de `@slidev-writer` e `@exercise-builder`**. É a peça que conecta "o que o aluno já sabe" com "o que deve ser ensinado hoje".
+O Handoff Card é o **output de cada agente disciplinar** e o **input de `@autor-slides` e `@autor-exercicios`**. É a peça que conecta "o que o aluno já sabe" com "o que deve ser ensinado hoje".
 
 ### Formato completo
 
@@ -187,7 +207,7 @@ O Handoff Card é o **output de cada agente disciplinar** e o **input de `@slide
 ### Exemplo real (D05 / A05)
 
 ```markdown
-## Handoff Card: D05-UC03 / A05 / 3 HA
+## Handoff Card: UC05 / A05 / 3 HA
 **Disciplina:** Desenvolvimento em Linguagem Python
 **Indicadores cobertos:** T1-Ind.1
 **Posição no bloco:** Bloco 1 (primeiros 3 HA do dia)
@@ -210,8 +230,8 @@ O Handoff Card é o **output de cada agente disciplinar** e o **input de `@slide
 - N4: processar dataset com for + validação de tipo + break (desafio)
 
 ### Cross-ref
-- D02-UC01: loop, iterate, range, index — intro vocab EN
-- D04-UC02: epoch usa loop internamente — conexão conceitual
+- UC02: loop, iterate, range, index — intro vocab EN
+- UC04: epoch usa loop internamente — conexão conceitual
 
 ### aulaNum: "Aula 05"
 ```
@@ -222,23 +242,25 @@ O Handoff Card é o **output de cada agente disciplinar** e o **input de `@slide
 
 | Situação | Agente(s) |
 |---|---|
-| "O que devo ensinar amanhã?" | `@orquestrador-1ano` |
-| "Planeje o trimestre completo" | `@orquestrador-1ano` |
-| "Gere a aula completa" | `@slidev-senac` (coordenador) |
-| "Só quero os slides, os exercícios eu resolvo" | `@slidev-writer` diretamente |
-| "Só quero os exercícios" | `@exercise-builder` diretamente |
-| "O que já foi dado em Python?" | `@d05-uc03-python-para-ia` |
-| "Verifique se a estrutura da aula está correta" | `@verificador-estrutura-aula` |
-| "Preciso do Handoff Card de D04" | `@d04-uc02-fundamentos-e-conceitos-de-ia` |
-| D01 - Fundamentos de Computação | `@d01-uc01-fundamentos-computacao` |
-| D02 - Inglês Instrumental | `@d02-uc01-ingles-instrumental` |
-| D03 - Fundamentos Matemáticos | `@d03-uc01-fundamentos-matematicos` |
-| D04 - Fundamentos e Conceitos de IA | `@d04-uc02-fundamentos-e-conceitos-de-ia` |
-| D05 - Python para IA | `@d05-uc03-python-para-ia` |
-| D06 - Arquitetura e GPU | `@d06-uc04-arquitetura-computadores-gpu` |
-| D07 - Transformação Digital | `@d07-uc05-transformacao-digital` |
-| D08 - Banco de Dados | `@d08-uc06-banco-de-dados` |
-| D09 - Estatística Aplicada | `@d09-uc07-estatistica-aplicada` |
+| "O que devo ensinar amanhã?" | `@planejador-trimestre` |
+| "Planeje o trimestre completo" | `@planejador-trimestre` |
+| "Gere a aula completa" | `@produtor-aula` (coordenador) |
+| "Só quero os slides, os exercícios eu resolvo" | `@autor-slides` diretamente |
+| "Só quero os exercícios" | `@autor-exercicios` diretamente |
+| "Revisar slides gerados, slide a slide" | `@editor-slides --mode=review` |
+| "Editar um slide específico por instrução" | `@editor-slides --mode=edit` |
+| "O que já foi dado em Python?" | `@uc05-python-para-ia` |
+| "Verifique se a estrutura da aula está correta" | `@auditor-estrutura` |
+| "Preciso do Handoff Card de UC04" | `@uc04-fundamentos-e-conceitos-de-ia` |
+| UC01 - Fundamentos de Computação | `@uc01-fundamentos-computacao` |
+| UC02 - Inglês Instrumental | `@uc02-ingles-instrumental` |
+| UC03 - Fundamentos Matemáticos | `@uc03-fundamentos-matematicos` |
+| UC04 - Fundamentos e Conceitos de IA | `@uc04-fundamentos-e-conceitos-de-ia` |
+| UC05 - Python para IA | `@uc05-python-para-ia` |
+| UC06 - Arquitetura e GPU | `@uc06-arquitetura-computadores-gpu` |
+| UC07 - Transformação Digital | `@uc07-transformacao-digital` |
+| UC08 - Banco de Dados | `@uc08-banco-de-dados` |
+| UC09 - Estatística Aplicada | `@uc09-estatistica-aplicada` |
 
 ---
 
@@ -285,13 +307,13 @@ Exemplos: `EX-05-01`, `EX-05-02`, `EX-06-01`
 
 ## 6. Troubleshooting rápido
 
-### "O verificador encontrou violações de T→E→D→TC"
+### "O auditor encontrou violações de T→E→D→TC"
 
-O `@verificador-estrutura-aula` corrige automaticamente. Confirme com `"Pode corrigir"` e ele executa + loga as alterações no `estrutura-aula.md`.
+O `@auditor-estrutura` corrige automaticamente. Confirme com `"Pode corrigir"` e ele executa + loga as alterações no `estrutura-aula.md`.
 
-### "O writer gerou exercícios em slides.md"
+### "O autor gerou exercícios em slides.md"
 
-Solicite ao writer que remova os exercícios dos slides e emita o Handoff para `@exercise-builder`. Os exercícios ficam **sempre** em `exercicios.md`, nunca como slides.
+Solicite ao autor-slides que remova os exercícios dos slides e emita o Handoff para `@autor-exercicios`. Os exercícios ficam **sempre** em `exercicios.md`, nunca como slides.
 
 ### "Conflito de merge ao fazer git push"
 
@@ -310,7 +332,7 @@ Copie a seção "Consolidado" do `contexto-*.md` e adicione no prompt: `"NÃO in
 ### "Não sei qual é a composição da aula de hoje"
 
 ```
-@orquestrador-1ano
+@planejador-trimestre
 "Calcule a composição para [data], considerando o estado atual em PROJETO-AULAS-1-TRIMESTRE.md"
 ```
 

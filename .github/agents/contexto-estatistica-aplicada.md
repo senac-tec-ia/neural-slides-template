@@ -1,6 +1,6 @@
-# Contexto — Estatística Aplicada e Lógica Matemática em IA (D09-UC07)
+# Contexto — Estatística Aplicada e Lógica Matemática em IA (UC09)
 
-**Código:** D09-UC07  
+**Código:** UC09  
 **UC:** UC07 — Utilização da Estatística Aplicada e Lógica Matemática em IA  
 **Disciplina:** Estatística Aplicada e Lógica Matemática  
 **Carga Total:** 33h (40 HA) | `T1: 13 HA (ajustado: 11) · T2: 14 HA · T3: 13 HA`
@@ -11,7 +11,7 @@
 
 | Trim. | HA Alocado | HA Dado | HA Restante |
 |---|---|---|---|
-| T1 | 11 (ajustado) | 0 | 11 |
+| T1 | 11 (ajustado) | 1 | 10 |
 | T2 | 14 | 0 | 14 |
 | T3 | 13 | 0 | 13 |
 
@@ -42,17 +42,16 @@
 | A02 | 27/02/2026 | 0 | Não trabalhada |
 | A03 | 05/03/2026 | 0 | Não trabalhada |
 | A04 | 06/03/2026 | 0 | Não trabalhada |
-
-**Disciplina não iniciada até A04. Iniciar o quanto antes — T1 termina 15/05.**
+| A05 | 12/03/2026 | ~1 | **INICIO:** Conceito de função `y = f(x)`, função linear `y = ax + b`, coeficiente angular `a` e coeficiente linear `b`, implementação em Python: `def f_linear(x, a, b): return a*x + b` |
 
 ---
 
 ## Pré-requisitos dos Alunos
 
 Conceitos que os alunos já têm (relevantes para esta disciplina):
-- **Operadores aritméticos Python:** `+, -, *, /, //, **` — vistos em D05-UC03 A04
-- **Funções `def/return`:** Vistos em D05-UC03 A04 — conectar `f(x)` matemático com `def f(x):`
-- **D03-UC01:** Verificar antes de cada aula o que foi coberto lá — não repetir
+- **Operadores aritméticos Python:** `+, -, *, /, //, **` — vistos em UC05 A04
+- **Funções `def/return`:** Vistos em UC05 A04 — conectar `f(x)` matemático com `def f(x):`
+- **UC03:** Verificar antes de cada aula o que foi coberto lá — não repetir
 
 ---
 
@@ -77,7 +76,9 @@ Conceitos que os alunos já têm (relevantes para esta disciplina):
 
 | Termo | Definição | Status |
 |---|---|---|
-| função linear | f(x) = ax + b — relação proporcional | Pendente |
+| função linear | f(x) = ax + b — relação proporcional | **Introduzido A05** |
+| coeficiente angular | `a` = inclinação da reta | **Introduzido A05** |
+| coeficiente linear | `b` = onde a reta cruza o eixo y | **Introduzido A05** |
 | regressão linear | modelo que ajusta uma reta a dados | Pendente |
 | coeficiente angular | `a` em `ax + b` — inclinação da reta | Pendente |
 | função quadrática | f(x) = ax² + bx + c — parábola | Pendente |
@@ -92,7 +93,7 @@ Conceitos que os alunos já têm (relevantes para esta disciplina):
 
 ## Regras para o Copilot
 
-1. **Coordenar com D03-UC01:** Verificar `contexto-fundamentos-matematicos.md` antes de gerar — nunca repetir o que foi coberto lá
+1. **Coordenar com UC03:** Verificar `contexto-fundamentos-matematicos.md` antes de gerar — nunca repetir o que foi coberto lá
 2. **Gráfico real de IA em toda aula:** Não introduzir função matemática sem mostrar onde ela aparece em treino de modelos
 3. **Python para plotar:** `import matplotlib.pyplot as plt; import numpy as np` — todo exercício deve ter versão em código
 4. **1 HA = 1 conceito + 1 exercício:** Disciplina enxuta — alta densidade de prática por HA
