@@ -34,28 +34,6 @@ function gh(endpoint, method = "GET", body = null) {
   return JSON.parse(out || "{}")
 }
 
-function getSha(path) {
-  try {
-    const res = gh(`repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`)
-    return res.sha
-  } catch {
-    return null // file doesn't exist yet
-  }
-}
-
-function push(remotePath, content, message) {
-  const sha = getSha(remotePath)
-  const body = {
-    message,
-    content: Buffer.from(content).toString("base64"),
-    branch: BRANCH,
-    ...(sha ? { sha } : {}),
-  }
-  gh(`repos/${OWNER}/${REPO}/contents/${remotePath}`, "PUT", body)
-  const action = sha ? "Updated" : "Created"
-  console.log(`  ${GREEN}✓${RESET} ${action}: ${remotePath}`)
-}
-
 function readLocal(relativePath) {
   return readFileSync(resolve(ROOT, relativePath), "utf-8")
 }
@@ -68,148 +46,128 @@ const files = []
 files.push({
   remote: ".github/copilot-instructions.md",
   content: readLocal(".github/copilot-instructions.md"),
-  msg: "feat(agents): add Copilot Orchestrator instructions",
 })
 
 // 1b. Operational workflow guide
 files.push({
   remote: ".github/FLUXO-AULA.md",
   content: readLocal(".github/FLUXO-AULA.md"),
-  msg: "feat(agents): add FLUXO-AULA operational guide (Fase 1)",
+})
+
+// 1c. Commands reference
+files.push({
+  remote: ".github/COMANDOS-AULAS.md",
+  content: readLocal(".github/COMANDOS-AULAS.md"),
 })
 
 // 2. Agent skill files
 files.push({
   remote: ".github/agents/verificador-estrutura-aula.agent.md",
   content: readLocal(".github/agents/verificador-estrutura-aula.agent.md"),
-  msg: "feat(agents): add verificador-estrutura-aula agent",
 })
 
 // 2b. Orchestrator agent
 files.push({
   remote: ".github/agents/orquestrador-1ano.agent.md",
   content: readLocal(".github/agents/orquestrador-1ano.agent.md"),
-  msg: "feat(agents): add orquestrador-1ano agent",
 })
 
 // 2c. Specialist writer agents (Fase 1 split)
 files.push({
   remote: ".github/agents/slidev-writer.agent.md",
   content: readLocal(".github/agents/slidev-writer.agent.md"),
-  msg: "feat(agents): add slidev-writer agent (Fase 1)",
 })
 files.push({
   remote: ".github/agents/exercise-builder.agent.md",
   content: readLocal(".github/agents/exercise-builder.agent.md"),
-  msg: "feat(agents): add exercise-builder agent (Fase 1)",
 })
 
 // 2d. Per-UC discipline agents (D01-D09)
 files.push({
   remote: ".github/agents/d01-uc01-fundamentos-computacao.agent.md",
   content: readLocal(".github/agents/d01-uc01-fundamentos-computacao.agent.md"),
-  msg: "feat(agents): add d01-uc01-fundamentos-computacao agent",
 })
 files.push({
   remote: ".github/agents/d02-uc01-ingles-instrumental.agent.md",
   content: readLocal(".github/agents/d02-uc01-ingles-instrumental.agent.md"),
-  msg: "feat(agents): add d02-uc01-ingles-instrumental agent",
 })
 files.push({
   remote: ".github/agents/d03-uc01-fundamentos-matematicos.agent.md",
   content: readLocal(".github/agents/d03-uc01-fundamentos-matematicos.agent.md"),
-  msg: "feat(agents): add d03-uc01-fundamentos-matematicos agent",
 })
 files.push({
   remote: ".github/agents/d04-uc02-fundamentos-e-conceitos-de-ia.agent.md",
   content: readLocal(".github/agents/d04-uc02-fundamentos-e-conceitos-de-ia.agent.md"),
-  msg: "feat(agents): add d04-uc02-fundamentos-e-conceitos-de-ia agent",
 })
 files.push({
   remote: ".github/agents/d05-uc03-python-para-ia.agent.md",
   content: readLocal(".github/agents/d05-uc03-python-para-ia.agent.md"),
-  msg: "feat(agents): add d05-uc03-python-para-ia agent",
 })
 files.push({
   remote: ".github/agents/d06-uc04-arquitetura-computadores-gpu.agent.md",
   content: readLocal(".github/agents/d06-uc04-arquitetura-computadores-gpu.agent.md"),
-  msg: "feat(agents): add d06-uc04-arquitetura-computadores-gpu agent",
 })
 files.push({
   remote: ".github/agents/d07-uc05-transformacao-digital.agent.md",
   content: readLocal(".github/agents/d07-uc05-transformacao-digital.agent.md"),
-  msg: "feat(agents): add d07-uc05-transformacao-digital agent",
 })
 files.push({
   remote: ".github/agents/d08-uc06-banco-de-dados.agent.md",
   content: readLocal(".github/agents/d08-uc06-banco-de-dados.agent.md"),
-  msg: "feat(agents): add d08-uc06-banco-de-dados agent",
 })
 files.push({
   remote: ".github/agents/d09-uc07-estatistica-aplicada.agent.md",
   content: readLocal(".github/agents/d09-uc07-estatistica-aplicada.agent.md"),
-  msg: "feat(agents): add d09-uc07-estatistica-aplicada agent",
 })
 
 // 3. UC context files — memory of what has been taught so far
 files.push({
   remote: ".github/agents/contexto-fundamentos-de-computacao.md",
   content: readLocal(".github/agents/contexto-fundamentos-de-computacao.md"),
-  msg: "feat(agents): sync contexto-fundamentos-de-computacao (A01-A04 real data)",
 })
 files.push({
   remote: ".github/agents/contexto-python-para-ia.md",
   content: readLocal(".github/agents/contexto-python-para-ia.md"),
-  msg: "feat(agents): sync contexto-python-para-ia (A02+A04 real data)",
 })
 files.push({
   remote: ".github/agents/contexto-ingles-instrumental.md",
   content: readLocal(".github/agents/contexto-ingles-instrumental.md"),
-  msg: "feat(agents): add contexto-ingles-instrumental (30 termos A01-A04)",
 })
 files.push({
   remote: ".github/agents/contexto-fundamentos-matematicos.md",
   content: readLocal(".github/agents/contexto-fundamentos-matematicos.md"),
-  msg: "feat(agents): add contexto-fundamentos-matematicos (pendente T1)",
 })
 files.push({
   remote: ".github/agents/contexto-fundamentos-e-conceitos-de-ia.md",
   content: readLocal(".github/agents/contexto-fundamentos-e-conceitos-de-ia.md"),
-  msg: "feat(agents): add contexto-fundamentos-e-conceitos-de-ia (A01+A03+A04)",
 })
 files.push({
   remote: ".github/agents/contexto-arquitetura-computadores-gpu.md",
   content: readLocal(".github/agents/contexto-arquitetura-computadores-gpu.md"),
-  msg: "feat(agents): add contexto-arquitetura-computadores-gpu (A03 parcial)",
 })
 files.push({
   remote: ".github/agents/contexto-transformacao-digital.md",
   content: readLocal(".github/agents/contexto-transformacao-digital.md"),
-  msg: "feat(agents): add contexto-transformacao-digital (A01+A02 data)",
 })
 files.push({
   remote: ".github/agents/contexto-banco-de-dados.md",
   content: readLocal(".github/agents/contexto-banco-de-dados.md"),
-  msg: "feat(agents): add contexto-banco-de-dados (pendente T1)",
 })
 files.push({
   remote: ".github/agents/contexto-estatistica-aplicada.md",
   content: readLocal(".github/agents/contexto-estatistica-aplicada.md"),
-  msg: "feat(agents): add contexto-estatistica-aplicada (pendente T1)",
 })
 
 // 4. publish.mjs script
 files.push({
   remote: ".github/scripts/publish.mjs",
   content: readLocal(".github/scripts/publish.mjs"),
-  msg: "feat(publish): add publish.mjs deploy script",
 })
 
 // 5. GitHub Action workflow
 files.push({
   remote: ".github/workflows/publish-aula.yml",
   content: readLocal(".github/workflows/publish-aula.yml"),
-  msg: "feat(publish): add publish-aula GitHub Action",
 })
 
 // 6. meta.yaml — blank template stub (NOT aula-04 content)
@@ -237,7 +195,6 @@ slideCount: 0
 
 agentsUsed: []
 `,
-  msg: "feat(schema): add meta.yaml stub",
 })
 
 // 7. exercicios.md — blank template stub (schema documentation only)
@@ -273,7 +230,6 @@ testes:                 # casos de teste para correção automática
 <!-- Níveis devem escalar: 1 → 2 → 3 → 4. Nunca pular níveis. -->
 <!-- Todo exercício python precisa de código starter com assinatura da função pronta. -->
 `,
-  msg: "feat(schema): add exercicios.md stub",
 })
 
 // 8. tarefa.md — blank template stub
@@ -322,7 +278,6 @@ nome_arquivo: "tarefa_00_slug.py"
 | Arquivo salvo no caminho correto com nome correto | 5 |
 | ... | ... |
 `,
-  msg: "feat(schema): add tarefa.md stub",
 })
 
 // 9. package.json — add the publish script
@@ -341,7 +296,6 @@ if (!pkgRaw.scripts?.publish) {
   files.push({
     remote: "package.json",
     content: JSON.stringify(pkgRaw, null, 2) + "\n",
-    msg: "feat(publish): add build --out dist and publish script to package.json",
   })
 } else {
   console.log(`  ${YELLOW}~${RESET} Skipped: package.json already has publish script`)
@@ -349,20 +303,54 @@ if (!pkgRaw.scripts?.publish) {
 
 // ─── execute ─────────────────────────────────────────────────────────────────
 
-console.log(`\n🚀 Syncing infrastructure to ${OWNER}/${REPO}\n`)
+console.log(`\n🚀 Syncing ${files.length} files → ${OWNER}/${REPO} (single commit)\n`)
 
-for (const { remote, content, msg } of files) {
-  try {
-    push(remote, content, msg)
-  } catch (err) {
-    console.error(`  ${RED}✗${RESET} Failed: ${remote}`)
-    console.error("   ", err.stderr?.trim() || err.message)
-    process.exit(1)
+try {
+  // Step 1: resolve current HEAD
+  const { object: { sha: headSha } } = gh(`repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`)
+
+  // Step 2: get base tree SHA
+  const { tree: { sha: baseTreeSha } } = gh(`repos/${OWNER}/${REPO}/git/commits/${headSha}`)
+
+  // Step 3: create one blob per file
+  const treeItems = []
+  for (const { remote, content } of files) {
+    const { sha } = gh(`repos/${OWNER}/${REPO}/git/blobs`, "POST", {
+      content: Buffer.from(content).toString("base64"),
+      encoding: "base64",
+    })
+    treeItems.push({ path: remote, mode: "100644", type: "blob", sha })
+    process.stdout.write(`  ${GREEN}✓${RESET} ${remote}\n`)
   }
-}
 
-console.log(`\n✅ Done. ${files.length} files synced.`)
-console.log(`   https://github.com/${OWNER}/${REPO}\n`)
+  // Step 4: create new tree
+  const { sha: newTreeSha } = gh(`repos/${OWNER}/${REPO}/git/trees`, "POST", {
+    base_tree: baseTreeSha,
+    tree: treeItems,
+  })
+
+  // Step 5: bail out if content didn't change
+  if (newTreeSha === baseTreeSha) {
+    console.log(`\n✅ Sem alterações — nada a commitar.\n`)
+    process.exit(0)
+  }
+
+  // Step 6: create commit
+  const { sha: newCommitSha } = gh(`repos/${OWNER}/${REPO}/git/commits`, "POST", {
+    message: `feat(sync): update ${files.length} infrastructure files [skip ci]`,
+    tree: newTreeSha,
+    parents: [headSha],
+  })
+
+  // Step 7: advance branch ref
+  gh(`repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`, "PATCH", { sha: newCommitSha })
+
+  console.log(`\n✅ Done. ${files.length} files → commit ${newCommitSha.slice(0, 7)}`)
+  console.log(`   https://github.com/${OWNER}/${REPO}\n`)
+} catch (err) {
+  console.error(`\n${RED}✗ Sync failed:${RESET}`, err.stderr?.trim() || err.message)
+  process.exit(1)
+}
 
 // Quando rodando localmente, faz rebase automático para evitar divergência
 // (o sync usa a API diretamente, criando commits no remote sem passar pelo git local)
