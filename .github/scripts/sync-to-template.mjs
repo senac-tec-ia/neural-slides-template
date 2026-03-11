@@ -71,6 +71,13 @@ files.push({
   msg: "feat(agents): add Copilot Orchestrator instructions",
 })
 
+// 1b. Operational workflow guide
+files.push({
+  remote: ".github/FLUXO-AULA.md",
+  content: readLocal(".github/FLUXO-AULA.md"),
+  msg: "feat(agents): add FLUXO-AULA operational guide (Fase 1)",
+})
+
 // 2. Agent skill files
 files.push({
   remote: ".github/agents/verificador-estrutura-aula.agent.md",
@@ -85,7 +92,19 @@ files.push({
   msg: "feat(agents): add orquestrador-1ano agent",
 })
 
-// 2c. Per-UC discipline agents (D01-D09)
+// 2c. Specialist writer agents (Fase 1 split)
+files.push({
+  remote: ".github/agents/slidev-writer.agent.md",
+  content: readLocal(".github/agents/slidev-writer.agent.md"),
+  msg: "feat(agents): add slidev-writer agent (Fase 1)",
+})
+files.push({
+  remote: ".github/agents/exercise-builder.agent.md",
+  content: readLocal(".github/agents/exercise-builder.agent.md"),
+  msg: "feat(agents): add exercise-builder agent (Fase 1)",
+})
+
+// 2d. Per-UC discipline agents (D01-D09)
 files.push({
   remote: ".github/agents/d01-uc01-fundamentos-computacao.agent.md",
   content: readLocal(".github/agents/d01-uc01-fundamentos-computacao.agent.md"),
