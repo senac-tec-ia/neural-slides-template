@@ -1,67 +1,108 @@
-# Contexto da Disciplina: Fundamentos de Computacao
+# Contexto — Fundamentos de Computação (D01-UC01)
 
-**Carga Horaria Total:** 34h
-**Estrutura:** 2 blocos x 3 aulas
-**Ultima atualizacao:** 2026-03-05
+**Código:** D01-UC01  
+**UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
+**Disciplina:** Fundamentos de Computação  
+**Carga Total:** 34h (41 HA) | `T1: 13 HA · T2: 14 HA · T3: 14 HA`  
+**Peso no dia:** Médio (2 HA/bloco)
 
 ---
 
-## Aulas Ministradas
+## Estado Geral
 
-| Aula | Bloco | Topicos Principais | Status |
+| Trim. | HA Alocado | HA Dado | HA Restante |
 |---|---|---|---|
-| Aula 01 | Bloco 1 | Hardware, software, modelo E-P-S, RAM, SSD, CPU, GPU, SO, nomenclatura de arquivos, terminal basico | Ministrada |
-| Aula 02 | Bloco 1 | Organizacao de arquivos, nomenclatura profissional, pesquisa tecnica, metodo dos 4 passos, vocabulario EN ampliado | Ministrada |
-| Aula 03 | Bloco 1 | Terminal (cd, dir, mkdir, cls), Python: variaveis, str/int/float/bool, type(), print(), input(), f-strings, operadores aritmeticos, leitura de erros | Em construcao |
-| Aula 04 | Bloco 2 | Vocabulario avancado de IA (NLP, Token, LLM, Backpropagation, Epoch, Embedding), Python: if/elif/else, def/return, ecossistema Python (Jupyter, SQL, Markdown, JSON) | Em construcao |
-| Aula 05 | Bloco 2 | - | Pendente |
-| Aula 06 | Bloco 2 | - | Pendente |
+| T1 | 13 | 8 | 5 |
+| T2 | 14 | 0 | 14 |
+| T3 | 14 | 0 | 14 |
 
 ---
 
-## Conceitos Introduzidos
+## Indicadores Curriculares
 
-| Conceito | Aula | Nivel de Profundidade |
+| Ind. | Descrição | Status T1 |
 |---|---|---|
-| Hardware vs Software | Aula 01 | Introdutorio |
-| Modelo Entrada-Processamento-Saida | Aula 01 | Introdutorio |
-| CPU vs GPU | Aula 01 | Introdutorio |
-| RAM vs SSD (volatilidade) | Aula 01 | Intermediario |
-| Sistema Operacional | Aula 01 | Introdutorio |
-| snake_case e nomenclatura profissional | Aula 01 | Intermediario |
-| Terminal de comandos (cmd basico) | Aula 01 | Introdutorio |
-| LibreOffice Calc (tabelas, CSV, filtros) | Aula 01 | Intermediario |
-| Vocabulario tecnico em ingles (12 termos Aula 01, 10 termos Aula 02) | Aulas 01-02 | Introdutorio |
-| Pesquisa tecnica na internet | Aula 02 | Introdutorio |
-| Metodo dos 4 passos para resolucao de problemas | Aula 02 | Introdutorio |
-| Comandos de terminal: cd, dir, mkdir, cls | Aula 03 | Introdutorio |
-| Python: variaveis e atribuicao | Aula 03 | Introdutorio |
-| Python: tipos str, int, float, bool e type() | Aula 03 | Introdutorio |
-| Python: print() com f-string e input() | Aula 03 | Introdutorio |
-| Python: operadores aritmeticos (+, -, *, /, //, %) | Aula 03 | Introdutorio |
-| Leitura de mensagens de erro do Python | Aula 03 | Introdutorio |
+| 1 | Diferencia conceitos de hardware e software, operando SO Windows para organizar arquivos, pastas e configurações básicas | Em andamento |
+| 2 | Cria, edita, formata e imprime documentos digitais no Word, com texto, tabelas, símbolos, figuras e layout de página | Pendente |
+| 3 | Aplica estratégias de edição e revisão para solucionar problemas de digitação e estrutura em documentos | Pendente |
 
 ---
 
-## Topicos Pendentes (proximo bloco ou proxima aula)
+## Aulas Realizadas
 
-- [x] Python: condicionais (if, elif, else) — coberto na Aula 04
-- [x] Vocabulario avancado de IA em ingles e portugues — coberto na Aula 04
-- [ ] Python: loops (for, while)
-- [ ] Python: listas e dicionarios basicos
-- [ ] Logica de programacao: fluxo de repeticao
+| Aula | Data | HA (D01) | Tópicos Principais | Status |
+|---|---|---|---|---|
+| A01 | 26/02/2026 | ~1,5 | Modelo E-P-S, hardware/software, CPU/GPU/RAM/SSD/HD, SO Windows, gerenciamento de arquivos, atalhos, EX01-10, Calc 01-06 | Ministrada |
+| A02 | 27/02/2026 | ~3 | Organização profissional de arquivos, nomenclatura snake_case, método 4 passos, pesquisa técnica, troubleshooting, Calc (validação, formatação condicional, planilha coletiva) | Ministrada |
+| A03 | 05/03/2026 | ~2 | Hardware/software aprofundado, SO, extensões de arquivos, atalhos do teclado, ferramentas do curso (VS Code, Colab, Classroom, GitHub), Windows profissional | Ministrada |
+| A04 | 06/03/2026 | ~1,5 | Continuação Windows profissional + terminal básico (cd, dir, mkdir, cls) | Ministrada |
 
 ---
 
-## Recomendacoes para o Proximo Encontro
+## Conceitos Consolidados (não reintroduzir no mesmo nível)
 
-> A Aula 04 cobriu: vocabulario avancado de IA (NLP, Token, LLM, Backpropagation e 10 termos como epoch,
-> embedding, loss, gradient), condicionais (if/elif/else), funcoes (def, parametros, return) e o
-> ecossistema Python para IA (Jupyter/Colab, SQL, Markdown, JSON, YAML).
-> O proximo encontro (Aula 05) deve entrar em loops: for e while, com listas simples como contexto.
-> Usar exemplos de repeticao contextualizada em IA: iterar sobre notas, sobre tokens, sobre resultados.
-> Nao rever condicionais — incorporar if/else dentro dos loops como uso natural.
-> Manter o padrao de intercalacao: 1 slide de teoria -> 1-2 exercicios imediatos.
+| Conceito | Aula | Nível de Profundidade |
+|---|---|---|
+| Modelo Entrada-Processamento-Saída (E-P-S) | A01 | Introdutório |
+| Hardware vs Software | A01 | Introdutório |
+| CPU vs GPU (comparativo funcional) | A01 | Introdutório |
+| RAM vs SSD/HD (volatilidade e velocidade) | A01 | Intermediário |
+| Sistema Operacional Windows | A01 | Introdutório |
+| Gerenciamento de arquivos e pastas | A01 | Introdutório |
+| Atalhos do teclado (Ctrl+C, Ctrl+V, Win+E) | A01 | Introdutório |
+| LibreOffice Calc / Google Sheets (tabelas, CSV) | A01-A02 | Intermediário |
+| Nomenclatura profissional snake_case | A01-A02 | Consolidado |
+| Método 4 passos para resolução de problemas | A02 | Introdutório |
+| Pesquisa técnica na internet | A02 | Introdutório |
+| Formatação condicional no Calc | A02 | Introdutório |
+| Extensões de arquivo (.docx, .pdf, .csv, .py) | A03 | Introdutório |
+| Ferramentas do curso (VS Code, Colab, Classroom, GitHub) | A03 | Reconhecimento |
+| Windows profissional (painel de controle, variáveis de ambiente) | A03-A04 | Intermediário |
+| Terminal básico: cd, dir, mkdir, cls | A04 | Introdutório |
+
+---
+
+## Tópicos Pendentes no T1 (5 HA restantes)
+
+**Prioridade: Indicador 2 — Word (criação, formatação, layout, tabelas, impressão)**
+
+- [ ] Word: criar e salvar documento, configurar página (margens, orientação)
+- [ ] Word: formatação de texto (negrito, itálico, alinhamento, espaçamento)
+- [ ] Word: inserir tabela, imagem, símbolo, número de página
+- [ ] Word: impressão e PDF (layout de impressão, área de impressão)
+- [ ] Word: estratégias de edição/revisão (Ind. 3) — localizar/substituir, corretor ortográfico
+
+---
+
+## Recomendações para o Próximo Encontro
+
+> A04 consolidou: Windows profissional e terminal básico (cd, dir, mkdir, cls).
+> O próximo encontro (A05) deve entrar no Indicador 2: Word.
+> Começar por: criar documento, configurar página, formatar texto — com exemplo de relatório técnico.
+> Conectar com D02-UC01 (Inglês): nomenclatura de menus e comandos em inglês no Word.
+> Conectar com snake_case já consolidado: nomear documentos corretamente ao salvar.
+> Manter o padrão de intercalação: max 2 slides de teoria → exercício imediato.
+
+---
+
+## Feedback de Campo
+
+| Data | Observação | Ação tomada |
+|---|---|---|
+| 2026-03-05 | Blocos longos de teoria causaram dispersão | Regra max 2 slides teoria consecutivos adicionada |
+| 2026-03-05 | Debates abertos não funcionaram bem | Substituir por perguntas técnicas dirigidas ou dinâmicas em dupla |
+
+---
+
+## Conexões com Outras Disciplinas
+
+| Conceito | Disciplina Relacionada | Observação |
+|---|---|---|
+| Vocabulário técnico em inglês (menus do Windows/Word) | D02-UC01 Inglês | Referenciar sempre ao mostrar telas |
+| GPU e paralelismo | D06-UC04 Arquitetura | Introduzido superficialmente — aprofundar lá |
+| CSV e dados estruturados | D08-UC06 Banco de Dados | Base do Calc → tabelas SQL |
+| snake_case | D05-UC03 Python | Nomenclatura já consolidada — reforçar em Python |
+| Terminal básico (cmd) | D05-UC03 Python | Pré-req. para rodar Python em terminal |
 
 ---
 

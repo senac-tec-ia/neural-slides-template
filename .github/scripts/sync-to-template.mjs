@@ -71,24 +71,112 @@ files.push({
   msg: "feat(agents): add Copilot Orchestrator instructions",
 })
 
-// 2. Agent skill files (full content from aula-04)
+// 2. Agent skill files
 files.push({
   remote: ".github/agents/verificador-estrutura-aula.agent.md",
   content: readLocal(".github/agents/verificador-estrutura-aula.agent.md"),
   msg: "feat(agents): add verificador-estrutura-aula agent",
 })
 
+// 2b. Orchestrator agent
+files.push({
+  remote: ".github/agents/orquestrador-1ano.agent.md",
+  content: readLocal(".github/agents/orquestrador-1ano.agent.md"),
+  msg: "feat(agents): add orquestrador-1ano agent",
+})
+
+// 2c. Per-UC discipline agents (D01-D09)
+files.push({
+  remote: ".github/agents/d01-uc01-fundamentos-computacao.agent.md",
+  content: readLocal(".github/agents/d01-uc01-fundamentos-computacao.agent.md"),
+  msg: "feat(agents): add d01-uc01-fundamentos-computacao agent",
+})
+files.push({
+  remote: ".github/agents/d02-uc01-ingles-instrumental.agent.md",
+  content: readLocal(".github/agents/d02-uc01-ingles-instrumental.agent.md"),
+  msg: "feat(agents): add d02-uc01-ingles-instrumental agent",
+})
+files.push({
+  remote: ".github/agents/d03-uc01-fundamentos-matematicos.agent.md",
+  content: readLocal(".github/agents/d03-uc01-fundamentos-matematicos.agent.md"),
+  msg: "feat(agents): add d03-uc01-fundamentos-matematicos agent",
+})
+files.push({
+  remote: ".github/agents/d04-uc02-fundamentos-e-conceitos-de-ia.agent.md",
+  content: readLocal(".github/agents/d04-uc02-fundamentos-e-conceitos-de-ia.agent.md"),
+  msg: "feat(agents): add d04-uc02-fundamentos-e-conceitos-de-ia agent",
+})
+files.push({
+  remote: ".github/agents/d05-uc03-python-para-ia.agent.md",
+  content: readLocal(".github/agents/d05-uc03-python-para-ia.agent.md"),
+  msg: "feat(agents): add d05-uc03-python-para-ia agent",
+})
+files.push({
+  remote: ".github/agents/d06-uc04-arquitetura-computadores-gpu.agent.md",
+  content: readLocal(".github/agents/d06-uc04-arquitetura-computadores-gpu.agent.md"),
+  msg: "feat(agents): add d06-uc04-arquitetura-computadores-gpu agent",
+})
+files.push({
+  remote: ".github/agents/d07-uc05-transformacao-digital.agent.md",
+  content: readLocal(".github/agents/d07-uc05-transformacao-digital.agent.md"),
+  msg: "feat(agents): add d07-uc05-transformacao-digital agent",
+})
+files.push({
+  remote: ".github/agents/d08-uc06-banco-de-dados.agent.md",
+  content: readLocal(".github/agents/d08-uc06-banco-de-dados.agent.md"),
+  msg: "feat(agents): add d08-uc06-banco-de-dados agent",
+})
+files.push({
+  remote: ".github/agents/d09-uc07-estatistica-aplicada.agent.md",
+  content: readLocal(".github/agents/d09-uc07-estatistica-aplicada.agent.md"),
+  msg: "feat(agents): add d09-uc07-estatistica-aplicada agent",
+})
+
 // 3. UC context files — memory of what has been taught so far
-//    These are the source of truth; refined after each aula via `course refine`
 files.push({
   remote: ".github/agents/contexto-fundamentos-de-computacao.md",
   content: readLocal(".github/agents/contexto-fundamentos-de-computacao.md"),
-  msg: "feat(agents): sync contexto-fundamentos-de-computacao (aula-04)",
+  msg: "feat(agents): sync contexto-fundamentos-de-computacao (A01-A04 real data)",
 })
 files.push({
   remote: ".github/agents/contexto-python-para-ia.md",
   content: readLocal(".github/agents/contexto-python-para-ia.md"),
-  msg: "feat(agents): sync contexto-python-para-ia (aula-04)",
+  msg: "feat(agents): sync contexto-python-para-ia (A02+A04 real data)",
+})
+files.push({
+  remote: ".github/agents/contexto-ingles-instrumental.md",
+  content: readLocal(".github/agents/contexto-ingles-instrumental.md"),
+  msg: "feat(agents): add contexto-ingles-instrumental (30 termos A01-A04)",
+})
+files.push({
+  remote: ".github/agents/contexto-fundamentos-matematicos.md",
+  content: readLocal(".github/agents/contexto-fundamentos-matematicos.md"),
+  msg: "feat(agents): add contexto-fundamentos-matematicos (pendente T1)",
+})
+files.push({
+  remote: ".github/agents/contexto-fundamentos-e-conceitos-de-ia.md",
+  content: readLocal(".github/agents/contexto-fundamentos-e-conceitos-de-ia.md"),
+  msg: "feat(agents): add contexto-fundamentos-e-conceitos-de-ia (A01+A03+A04)",
+})
+files.push({
+  remote: ".github/agents/contexto-arquitetura-computadores-gpu.md",
+  content: readLocal(".github/agents/contexto-arquitetura-computadores-gpu.md"),
+  msg: "feat(agents): add contexto-arquitetura-computadores-gpu (A03 parcial)",
+})
+files.push({
+  remote: ".github/agents/contexto-transformacao-digital.md",
+  content: readLocal(".github/agents/contexto-transformacao-digital.md"),
+  msg: "feat(agents): add contexto-transformacao-digital (A01+A02 data)",
+})
+files.push({
+  remote: ".github/agents/contexto-banco-de-dados.md",
+  content: readLocal(".github/agents/contexto-banco-de-dados.md"),
+  msg: "feat(agents): add contexto-banco-de-dados (pendente T1)",
+})
+files.push({
+  remote: ".github/agents/contexto-estatistica-aplicada.md",
+  content: readLocal(".github/agents/contexto-estatistica-aplicada.md"),
+  msg: "feat(agents): add contexto-estatistica-aplicada (pendente T1)",
 })
 
 // 4. publish.mjs script
@@ -220,15 +308,12 @@ nome_arquivo: "tarefa_00_slug.py"
 
 // 9. package.json — add the publish script
 const pkgRaw = JSON.parse(
-  execSync(`gh api repos/${OWNER}/${REPO}/contents/package.json --jq '.content'`, {
+  execSync(`gh api repos/${OWNER}/${REPO}/contents/package.json --jq ".content"`, {
     encoding: "utf-8",
   }).trim()
     .split("\n")
     .map((l) => Buffer.from(l, "base64").toString("utf-8"))
-    .join("") ||
-  execSync(`gh api "repos/${OWNER}/${REPO}/contents/package.json" --jq '.content | @base64d'`, {
-    encoding: "utf-8",
-  })
+    .join("")
 )
 
 if (!pkgRaw.scripts?.publish) {

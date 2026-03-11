@@ -8,10 +8,20 @@ This repository is a **Slidev lesson deck** for the *Técnico em Inteligência A
 
 | Task | Invoke |
 |---|---|
+| Planejar composição do dia ou calcular HA restantes | `@orquestrador-1ano` |
 | Create or edit slides in `slides.md` | `@slidev-senac` |
 | Create or edit `exercicios.md` | `@slidev-senac` |
 | Audit slide order, tags, UC labels | `@verificador-estrutura-aula` |
 | Reorder or insert structural slides | `@verificador-estrutura-aula` |
+| D01-UC01 Fundamentos de Computação | `@d01-uc01-fundamentos-computacao` |
+| D02-UC01 Inglês Instrumental | `@d02-uc01-ingles-instrumental` |
+| D03-UC01 Fundamentos Matemáticos | `@d03-uc01-fundamentos-matematicos` |
+| D04-UC02 Fundamentos e Conceitos de IA | `@d04-uc02-fundamentos-e-conceitos-de-ia` |
+| D05-UC03 Python para IA | `@d05-uc03-python-para-ia` |
+| D06-UC04 Arquitetura de Computadores e GPU | `@d06-uc04-arquitetura-computadores-gpu` |
+| D07-UC05 Transformação Digital | `@d07-uc05-transformacao-digital` |
+| D08-UC06 Banco de Dados | `@d08-uc06-banco-de-dados` |
+| D09-UC07 Estatística Aplicada | `@d09-uc07-estatistica-aplicada` |
 
 **Never mix tasks in one session.** If the user asks for both new content AND a structural audit, run `@verificador-estrutura-aula` first, wait for confirmation, then run `@slidev-senac`.
 
@@ -21,10 +31,17 @@ This repository is a **Slidev lesson deck** for the *Técnico em Inteligência A
 
 Before generating any lesson content, read the UC context file(s) for the discipline(s) involved. These files are the agent's living memory of what has already been taught.
 
-| Discipline | Context file |
-|---|---|
-| Fundamentos de Computação | `.github/agents/contexto-fundamentos-de-computacao.md` |
-| Python para IA | `.github/agents/contexto-python-para-ia.md` |
+| Código | Disciplina | Context file |
+|---|---|---|
+| D01-UC01 | Fundamentos de Computação | `.github/agents/contexto-fundamentos-de-computacao.md` |
+| D02-UC01 | Inglês Instrumental | `.github/agents/contexto-ingles-instrumental.md` |
+| D03-UC01 | Fundamentos Matemáticos | `.github/agents/contexto-fundamentos-matematicos.md` |
+| D04-UC02 | Fundamentos e Conceitos de IA | `.github/agents/contexto-fundamentos-e-conceitos-de-ia.md` |
+| D05-UC03 | Python para IA | `.github/agents/contexto-python-para-ia.md` |
+| D06-UC04 | Arquitetura de Computadores e GPU | `.github/agents/contexto-arquitetura-computadores-gpu.md` |
+| D07-UC05 | Transformação Digital | `.github/agents/contexto-transformacao-digital.md` |
+| D08-UC06 | Banco de Dados | `.github/agents/contexto-banco-de-dados.md` |
+| D09-UC07 | Estatística Aplicada | `.github/agents/contexto-estatistica-aplicada.md` |
 
 If a context file does not yet exist for a UC, create it using the standard format defined in `.github/agents/slidev-senac.agent.md § 10`.
 

@@ -1,70 +1,87 @@
-# Contexto da Disciplina: Python para IA
+# Contexto — Desenvolvimento de Linguagem Python (D05-UC03)
 
-**Carga Horaria Total:** 67h
-**Estrutura:** 2 blocos x 3 aulas (Ano 1, Trimestres 1 e 2)
-**Ultima atualizacao:** 2026-03-05
+**Código:** D05-UC03  
+**UC:** UC03 — Desenvolvimento de Linguagem Python  
+**Disciplina:** Python para IA  
+**Carga Total:** 67h (80 HA) | `T1: 26 HA (ajustado: 20) · T2: 27 HA · T3: 27 HA`  
+**Peso no dia:** Pesado (3 HA/bloco — sempre no Bloco 1)
 
 ---
 
-## Aulas Ministradas
+## Estado Geral
 
-| Aula | Bloco | Topicos Principais | Status |
+| Trim. | HA Alocado | HA Dado | HA Restante |
 |---|---|---|---|
-| Aula 01 | Bloco 1 | - | Pendente |
-| Aula 02 | Bloco 1 | - | Pendente |
-| Aula 03 | Bloco 1 | - | Pendente |
-| Aula 04 | Bloco 2 | - | Pendente |
-| Aula 05 | Bloco 2 | - | Pendente |
-| Aula 06 | Bloco 2 | - | Pendente |
-
-> Nota: conteudo introdutorio de Python (variaveis, tipos, print, input, operadores)
-> esta sendo iniciado em Fundamentos de Computacao Aula 03 como ponte para esta UC.
+| T1 | 20 (ajustado) | 2,5 | 17,5 |
+| T2 | 27 | 0 | 27 |
+| T3 | 27 | 0 | 27 |
 
 ---
 
-## Pre-requisitos mapeados (introduzidos em Fundamentos de Computacao)
+## Indicadores Curriculares
 
-| Conceito | Onde foi introduzido | Nivel atual |
+| Ind. | Descrição | Status T1 |
 |---|---|---|
-| Terminal de comandos (cmd) | Fund. de Computacao Aula 03 | Basico |
-| Variaveis e atribuicao | Fund. de Computacao Aula 03 | Introdutorio |
-| Tipos de dados: str, int, float, bool | Fund. de Computacao Aula 03 | Introdutorio |
-| print() e input() | Fund. de Computacao Aula 03 | Introdutorio |
-| Operadores aritmeticos | Fund. de Computacao Aula 03 | Introdutorio |
-| snake_case e nomenclatura de arquivos | Fund. de Computacao Aula 01 | Consolidado |
-| Estrutura de pastas do projeto (SENAC-TecIA) | Fund. de Computacao Aula 01 | Consolidado |
-| Condicionais: if, elif, else | Fund. de Computacao Aula 04 | Introdutorio |
-| Funcoes: def, parametros, return | Fund. de Computacao Aula 04 | Introdutorio |
-| Jupyter Notebook / Google Colab | Fund. de Computacao Aula 04 | Reconhecimento |
-| Vocabulario avancado de IA: NLP, Token, LLM, Backpropagation | Fund. de Computacao Aula 04 | Introdutorio |
+| 1 | Elabora código conforme funcionalidades e características do aplicativo, na linguagem Python | Em andamento |
+| 2 | Utiliza comandos de integração dos códigos construídos em Python, conforme estrutura projetada | Pendente |
+| 3 | Realiza a depuração, verificando e corrigindo erros na programação, de acordo com recomendação técnica (T2) | Pendente |
+| 4 | Utiliza bibliotecas de manipulação de dados para aplicações de IA (T3) | Pendente |
 
 ---
 
-## Topicos a Cobrir nesta UC
+## Aulas Realizadas
 
-- [x] Condicionais: if, elif, else — introduzidos em Fund. de Computacao Aula 04
-- [x] Funcoes: def, parametros, return — introduzidos em Fund. de Computacao Aula 04
-- [ ] Loops: for e while
-- [ ] Listas e dicionarios
-- [ ] Funcoes: def, parametros, retorno
-- [ ] Importar modulos: random, math, os
-- [ ] Leitura e escrita de arquivos
-- [ ] Pandas basico: DataFrame, read_csv, head, describe
-- [ ] Numpy basico: arrays, operacoes vetorizadas
-- [ ] Matplotlib: grafico de linha e de barras
-- [ ] Scikit-learn: primeiro modelo de ML com Pipeline
+| Aula | Data | HA (D05) | Tópicos Principais | Status |
+|---|---|---|---|---|
+| A01 | 26/02/2026 | 0 | Não trabalhada | - |
+| A02 | 27/02/2026 | ~0,5 | Reconhecimento do ambiente: VS Code, Google Colab, GitHub, Jupyter Notebook — onde rodar Python | Ministrada |
+| A03 | 05/03/2026 | 0 | Não trabalhada | - |
+| A04 | 06/03/2026 | ~2 | Variáveis, tipos (str/int/float/bool), `print()`, `input()`, operadores aritmeticos, `if/elif/else`, `def/return`, ecossistema Python (Jupyter/Colab, pip, SQL, Markdown, JSON, YAML) | Ministrada |
 
 ---
 
-## Recomendacoes para o Primeiro Encontro desta UC
+## Conceitos Consolidados (não reintroduzir no mesmo nível)
 
-> Quando Python para IA comecar formalmente, os alunos ja terao feito em Fundamentos de Computacao:
-> variaveis, tipos, print(), input(), operadores, condicionais (if/elif/else), funcoes (def/return)
-> e um primeiro contato com Google Colab.
-> A primeira aula de Python para IA deve comecar em loops (for/while) e listas — sem rever o basico.
-> Os alunos ja conhecem o vocabulario de IA (NLP, Token, LLM, Backpropagation) em nivel introdutorio:
-> use esses termos naturalmente sem precisar redefinir do zero.
-> O foco desta UC e aplicacao em dados e IA — Pandas, Numpy e scikit-learn como destino.
+---
+
+## Conceitos Consolidados (não reintroduzir no mesmo nível)
+
+| Conceito | Aula | Nível de Profundidade |
+|---|---|---|
+| Ambientes Python (VS Code, Colab, Jupyter) | A02 | Reconhecimento |
+| Variáveis e atribuição | A04 | Introdutório |
+| Tipos de dados: str, int, float, bool | A04 | Introdutório |
+| `print()` e `input()` | A04 | Introdutório |
+| Operadores aritméticos (+, -, *, /, //, %, **) | A04 | Introdutório |
+| Condicionais: `if/elif/else` | A04 | Introdutório |
+| Funções: `def`, parâmetros, `return` | A04 | Introdutório |
+| Ecossistema Python (pip, Jupyter, SQL, Markdown, JSON) | A04 | Reconhecimento |
+
+---
+
+## Tópicos Pendentes no T1 (17,5 HA restantes)
+
+**Ponto de partida obrigatório: não rever variáveis, tipos, print, input, operadores, condicionais, def/return — já consolidados em A04.**
+
+| Seq. | Tópico | HA | Ind. |
+|---|---|---|---|
+| 1 | Loops: `for`, `while`, `break`, `continue` | 3 | 1 |
+| 2 | Listas e dicionários: criação, indexação, `append`, `for` sobre listas | 3 | 1 |
+| 3 | Funções avançadas: parâmetros default, `*args`, docstrings, escopo | 2 | 1 |
+| 4 | Módulos e importações: `import`, `random`, `math`, `os` | 2 | 2 |
+| 5 | Leitura e escrita de arquivos: `open()`, `read()`, `write()`, `.csv` | 2 | 2 |
+| 6 | Tratamento de erros: `try/except` | 2 | 1 |
+| 7 | Exercício integrador: mini-projeto com lista de dados de IA | 3 | 1, 2 |
+
+---
+
+## Recomendações para o Próximo Encontro
+
+> A04 consolidou: variáveis, tipos, print, input, operadores, condicionais, def/return, ecossistema.
+> A05 (próxima aula com D05) deve começar diretamente em loops (for/while).
+> Contexto IA: iterar sobre lista de tokens, notas de modelos, resultados de classificação.
+> Não rever condicionais — incorporar if/else dentro dos loops como uso natural.
+> Manter padrão: 1 slide teoria + exercício imediato. Dinâmicas em dupla para código.
 
 ---
 
