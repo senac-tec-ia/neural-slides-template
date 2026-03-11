@@ -2,6 +2,8 @@
 
 This repository is a **Slidev lesson deck** for the *Técnico em Inteligência Artificial* course at Senac Brazil. Every task in this repo falls into one of two domains: **content authoring** and **structure auditing**. Route to the correct agent accordingly.
 
+> **Workflow reference:** See `.github/FLUXO-AULA.md` for the full step-by-step guide on producing a lesson from scratch.
+
 ---
 
 ## Agent Routing
@@ -9,8 +11,9 @@ This repository is a **Slidev lesson deck** for the *Técnico em Inteligência A
 | Task | Invoke |
 |---|---|
 | Planejar composição do dia ou calcular HA restantes | `@orquestrador-1ano` |
-| Create or edit slides in `slides.md` | `@slidev-senac` |
-| Create or edit `exercicios.md` | `@slidev-senac` |
+| Gerar aula completa (slides + exercícios) | `@slidev-senac` |
+| Gerar **apenas slides** (teoria, debate, dinâmica) | `@slidev-writer` |
+| Gerar **apenas exercicios.md + tarefa.md** | `@exercise-builder` |
 | Audit slide order, tags, UC labels | `@verificador-estrutura-aula` |
 | Reorder or insert structural slides | `@verificador-estrutura-aula` |
 | D01-UC01 Fundamentos de Computação | `@d01-uc01-fundamentos-computacao` |
@@ -23,7 +26,32 @@ This repository is a **Slidev lesson deck** for the *Técnico em Inteligência A
 | D08-UC06 Banco de Dados | `@d08-uc06-banco-de-dados` |
 | D09-UC07 Estatística Aplicada | `@d09-uc07-estatistica-aplicada` |
 
+**Regra de separação:** `@slidev-writer` NUNCA toca `exercicios.md`. `@exercise-builder` NUNCA toca `slides.md`. Sempre seguir o Handoff Card como contrato entre as camadas.
+
 **Never mix tasks in one session.** If the user asks for both new content AND a structural audit, run `@verificador-estrutura-aula` first, wait for confirmation, then run `@slidev-senac`.
+
+---
+
+## Handoff Card — Contrato entre Camadas
+
+O Handoff Card é o output de cada agente disciplinar (`@d01`–`@d09`) e o input de `@slidev-writer` e `@exercise-builder`. Sempre solicitar um Handoff Card antes de gerar conteúdo.
+
+```markdown
+## Handoff Card: D0X-UC0X / A0N / N HA
+**Disciplina:** [nome] | **Indicadores:** T[N]-Ind.[N]
+
+### Consolidado (NÃO reintroduzir)
+- conceito A, conceito B
+
+### Ensinar hoje
+1. tópico — contexto: [exemplo IA/dados]
+
+### Exercícios N1→N4
+- N1: reconhecimento | N2: guiado | N3: independente | N4: desafio
+
+### Cross-ref: D0X [conceito que conecta]
+### aulaNum: "Aula NN"
+```
 
 ---
 
