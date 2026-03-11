@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 /**
  * sync-to-template.mjs
- * Empurra a infraestrutura do agente para o senac-tec-ia/neural-slides-template
+ * Empurra a infraestrutura do agente para um repo do senac-tec-ia
  * via GitHub API (sem clonar o repo). Roda a partir do diretório de qualquer aula.
  *
- * Usage: node .github/scripts/sync-to-template.mjs
+ * Usage:
+ *   node .github/scripts/sync-to-template.mjs              → destino: neural-slides-template
+ *   node .github/scripts/sync-to-template.mjs --repo A05   → destino: A05 (só infra, sem stubs de conteúdo)
+ *
  * Requires: gh CLI autenticado com acesso ao senac-tec-ia
  */
 
@@ -16,8 +19,16 @@ import { fileURLToPath } from "url"
 const __dir   = dirname(fileURLToPath(import.meta.url))
 const ROOT    = resolve(__dir, "../..")
 const OWNER   = "senac-tec-ia"
-const REPO    = "neural-slides-template"
 const BRANCH  = "master"
+
+// Resolve --repo argument (default: template)
+const repoArg = process.argv.indexOf("--repo")
+const REPO    = repoArg !== -1 ? process.argv[repoArg + 1] : "neural-slides-template"
+const IS_TEMPLATE = REPO === "neural-slides-template"
+
+if (!IS_TEMPLATE) {
+  console.log(`\n📦 Modo: sync de infra para aula (${REPO}) — stubs de conteúdo ignorados.`)
+}
 
 const GREEN  = "\x1b[32m"
 const YELLOW = "\x1b[33m"
@@ -173,6 +184,7 @@ files.push({
 // 6. meta.yaml — blank template stub (NOT aula-04 content)
 files.push({
   remote: "meta.yaml",
+  templateOnly: true,
   content: `# Metadados da Aula — Neural Slides
 # Preenchido pelo CLI ao rodar \`course new\`
 
@@ -200,6 +212,7 @@ agentsUsed: []
 // 7. exercicios.md — blank template stub (schema documentation only)
 files.push({
   remote: "exercicios.md",
+  templateOnly: true,
   content: `# Exercícios — Aula [N]: [Título]
 
 > **Para o agente (@slidev-senac):** Cada exercício começa com um bloco \`---\` de
@@ -235,6 +248,7 @@ testes:                 # casos de teste para correção automática
 // 8. tarefa.md — blank template stub
 files.push({
   remote: "tarefa.md",
+  templateOnly: true,
   content: `# Tarefa de Casa — Aula [N]: [Título]
 
 ---
@@ -301,9 +315,14 @@ if (!pkgRaw.scripts?.publish) {
   console.log(`  ${YELLOW}~${RESET} Skipped: package.json already has publish script`)
 }
 
+// ─── filter ──────────────────────────────────────────────────────────────────
+// When targeting a lesson repo, skip content stubs (meta.yaml, exercicios.md, tarefa.md)
+// to avoid overwriting the actual lesson content.
+const syncFiles = IS_TEMPLATE ? files : files.filter(f => !f.templateOnly)
+
 // ─── execute ─────────────────────────────────────────────────────────────────
 
-console.log(`\n🚀 Syncing ${files.length} files → ${OWNER}/${REPO} (single commit)\n`)
+console.log(`\n🚀 Syncing ${syncFiles.length} files → ${OWNER}/${REPO} (single commit)\n`)
 
 try {
   // Step 1: resolve current HEAD
@@ -314,7 +333,7 @@ try {
 
   // Step 3: create one blob per file
   const treeItems = []
-  for (const { remote, content } of files) {
+  for (const { remote, content } of syncFiles) {
     const { sha } = gh(`repos/${OWNER}/${REPO}/git/blobs`, "POST", {
       content: Buffer.from(content).toString("base64"),
       encoding: "base64",
@@ -337,7 +356,7 @@ try {
 
   // Step 6: create commit
   const { sha: newCommitSha } = gh(`repos/${OWNER}/${REPO}/git/commits`, "POST", {
-    message: `feat(sync): update ${files.length} infrastructure files [skip ci]`,
+    message: `feat(sync): update ${syncFiles.length} infrastructure files [skip ci]`,
     tree: newTreeSha,
     parents: [headSha],
   })
@@ -345,7 +364,7 @@ try {
   // Step 7: advance branch ref
   gh(`repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`, "PATCH", { sha: newCommitSha })
 
-  console.log(`\n✅ Done. ${files.length} files → commit ${newCommitSha.slice(0, 7)}`)
+  console.log(`\n✅ Done. ${syncFiles.length} files → commit ${newCommitSha.slice(0, 7)}`)
   console.log(`   https://github.com/${OWNER}/${REPO}\n`)
 } catch (err) {
   console.error(`\n${RED}✗ Sync failed:${RESET}`, err.stderr?.trim() || err.message)
