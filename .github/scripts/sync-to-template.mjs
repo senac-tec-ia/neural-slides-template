@@ -344,3 +344,22 @@ for (const { remote, content, msg } of files) {
 
 console.log(`\n✅ Done. ${files.length} files synced.`)
 console.log(`   https://github.com/${OWNER}/${REPO}\n`)
+
+// Quando rodando localmente, faz rebase automático para evitar divergência
+// (o sync usa a API diretamente, criando commits no remote sem passar pelo git local)
+if (!process.env.CI) {
+  try {
+    console.log("🔄 Rebasing local branch against remote (evita conflito no próximo commit)...")
+    const hasDirty = execSync("git status --porcelain", { encoding: "utf-8", cwd: ROOT }).trim()
+    if (hasDirty) {
+      execSync("git stash --include-untracked", { stdio: "inherit", cwd: ROOT })
+    }
+    execSync("git pull --rebase", { stdio: "inherit", cwd: ROOT })
+    if (hasDirty) {
+      execSync("git stash pop", { stdio: "inherit", cwd: ROOT })
+    }
+    console.log("✅ Rebase concluído.\n")
+  } catch {
+    console.warn("⚠️  Rebase falhou — rode 'git pull --rebase' manualmente antes do próximo commit.\n")
+  }
+}
