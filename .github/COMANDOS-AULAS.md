@@ -23,19 +23,20 @@ cd $AULA ; npm install ; code .
 | A05 | [senac-tec-ia/A05](https://github.com/senac-tec-ia/A05) | 2026-03-11 |
 | A06 | — | — |
 
-## Sincronizar infraestrutura do template para todos os repos existentes
+## Sincronizar infraestrutura do template para um repo de aula existente
 
-> Depois de atualizar o template, os repos de aulas **não recebem as mudanças automaticamente**.
-> Use este script para sincronizar manualmente um repo específico.
+> Depois de atualizar agentes/contextos no template, use este comando para propagar
+> para uma aula específica. **Nunca** sobrescreve `slides.md`, `exercicios.md`,
+> `meta.yaml` ou `tarefa.md` — só arquivos de `.github/`.
 
 ```powershell
-# Dentro do repo da aula (ex: A05)
-cd "C:\Users\leozn\Documents\Projeto Coder 3.0\A05"
-node .github/scripts/sync-to-template.mjs
+# De dentro do neural-slides-template:
+cd "C:\Users\leozn\Documents\Projeto Coder 3.0\neural-slides-template"
+node .github/scripts/sync-to-template.mjs --repo A05
+node .github/scripts/sync-to-template.mjs --repo A06
 ```
 
-> Ou, para atualizar só o template (de dentro do neural-slides-template):
+> Ou para atualizar só o template (sem `--repo`):
 ```powershell
-cd "C:\Users\leozn\Documents\Projeto Coder 3.0\neural-slides-template"
 node .github/scripts/sync-to-template.mjs
 ```
