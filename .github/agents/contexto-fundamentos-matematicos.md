@@ -1,7 +1,7 @@
 # Contexto — Fundamentos Matemáticos para Computação e IA (UC03)
 
 **Código:** UC03  
-**UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
+**UC:** UC03 — Fundamentos Matemáticos para Computação e IA  
 **Disciplina:** Fundamentos Matemáticos para Computação e IA  
 **Carga Total:** 33h (40 HA) | `T1: 13 HA · T2: 14 HA · T3: 13 HA`
 

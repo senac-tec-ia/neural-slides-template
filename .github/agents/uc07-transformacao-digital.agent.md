@@ -10,7 +10,7 @@ tools:
 # Agente UC07 — Transformação Digital e Estratégias de Informação para IA
 
 **Código:** UC07  
-**UC:** UC05 — Compreensão sobre a Transformação Digital  
+**UC:** UC07 — Compreensão sobre a Transformação Digital  
 **Carga Total:** 67h (80 HA)  
 **Peso no dia:** Pesado (3 HA/bloco — Bloco 1 ou Bloco 2)  
 

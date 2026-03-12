@@ -89,10 +89,13 @@ If a context file does not yet exist for a UC, create it using the standard form
 2. **Slide order within each class (aulaNum):** `[TEORIA]` → `[EXERCICIO]` → `[DINAMICA]` → `[TAREFA DE CASA]`. Never place homework before exercises or exercises before theory.
 3. **Theory density limit:** Never generate more than **2 consecutive theory slides** without an exercise, debate, or dynamic in between.
 4. **Pre-generation gate:** Before writing any slide, generate `estrutura-aula.md` and wait for explicit user approval. Never touch `slides.md` before approval.
-5. **Em-dash prohibition:** Never use `—` in any slide title, bullet, or body text. Use `:` for enumerations, `-` in lists, comma in prose.
+5. **Em-dash prohibition:** Never use `—` anywhere: not in slide titles, bullets, body text, code comments, or any generated prose. In pt-BR use `:` for enumerations, `,` for continuations in prose, and `-` only in list bullets. This applies to ALL output, not just slides.
 6. **Exercise progression:** Exercises within a class must escalate: level 1 (comprehension) → level 2 (guided application) → level 3 (independent application) → level 4 (challenge). Do not skip levels.
 7. **Starter code:** Every coding exercise must include a starter code block with the function signature already written. Students never start from a blank file.
 8. **Context-first rule:** Every coding example in this course should use AI/data themes (tokens, model outputs, datasets) — not generic math calculators or unrelated domains.
+9. **Table-code separation:** A table and a code block must NEVER appear on the same slide. If both are needed, split into two slides: one with the table, one with the code. Two tables on the same slide are also forbidden. Two code blocks on the same slide (`default` layout) are forbidden — use `two-cols-text` only if each column genuinely has its own independent block.
+11. **Scope guard for non-Python disciplines:** When adding Python code examples to Matemática, Estatística, or any non-UC05 discipline, use only constructs already listed under `Conceitos Consolidados` in `.github/agents/contexto-python-para-ia.md`. Never use `for`, `while`, lists, or dictionaries in slides of other disciplines before those topics are taught in UC05.
+12. **Tool and agent transparency:** At the end of every response, include a `## Ferramentas e Agentes Usados` section listing: (a) every agent invoked (e.g., `@autor-slides`, `@auditor-estrutura`) and (b) every tool used (e.g., `edit/editFiles`, `search/codebase`). Tool identifiers stay in English as technical names; the section title and explanations are in pt-BR.
 
 ---
 
@@ -116,7 +119,9 @@ Before ending any content-generation session, verify:
 - [ ] Every class block (`aulaNum`) follows the T→E→D→TC order
 - [ ] No more than 2 consecutive `[TEORIA]` slides without interaction
 - [ ] All coding exercises have starter code
+- [ ] No Python constructs used in non-UC05 slides that haven't been taught yet
 - [ ] UC context file(s) updated with what was covered today
 - [ ] `estrutura-aula.md` synced to the final slide count
 - [ ] No em-dash anywhere in slide content
 - [ ] `meta.yaml` `status` field updated to `ready` or `published`
+- [ ] Response ends with a `## Ferramentas e Agentes Usados` section

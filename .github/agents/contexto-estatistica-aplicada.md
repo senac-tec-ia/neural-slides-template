@@ -1,7 +1,7 @@
 # Contexto — Estatística Aplicada e Lógica Matemática em IA (UC09)
 
 **Código:** UC09  
-**UC:** UC07 — Utilização da Estatística Aplicada e Lógica Matemática em IA  
+**UC:** UC09 — Utilização da Estatística Aplicada e Lógica Matemática em IA  
 **Disciplina:** Estatística Aplicada e Lógica Matemática  
 **Carga Total:** 33h (40 HA) | `T1: 13 HA (ajustado: 11) · T2: 14 HA · T3: 13 HA`
 

@@ -10,7 +10,7 @@ tools:
 # Agente UC08 — Desenvolvimento de Banco de Dados
 
 **Código:** UC08  
-**UC:** UC06 — Desenvolvimento de Banco de Dados  
+**UC:** UC08 — Desenvolvimento de Banco de Dados  
 **Carga Total:** 67h (80 HA)  
 **Peso no dia:** Pesado (3 HA/bloco — sempre no Bloco 1)  
 

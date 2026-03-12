@@ -10,7 +10,7 @@ tools:
 # Agente UC03 — Fundamentos Matemáticos para Computação e IA
 
 **Código:** UC03  
-**UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
+**UC:** UC03 — Fundamentos Matemáticos para Computação e IA  
 **Carga Total:** 33h (40 HA)  
 **Peso no dia:** Leve-Médio (1–2 HA/bloco)  
 

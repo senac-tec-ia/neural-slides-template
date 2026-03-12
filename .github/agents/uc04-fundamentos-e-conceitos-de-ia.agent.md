@@ -10,7 +10,7 @@ tools:
 # Agente UC04 — Fundamentos e Conceitos de IA
 
 **Código:** UC04  
-**UC:** UC02 — Fundamentos e Conceitos de IA  
+**UC:** UC04 — Fundamentos e Conceitos de IA  
 **Carga Total:** 33h (41 HA)  
 **Peso no dia:** Médio (2 HA/bloco)  
 

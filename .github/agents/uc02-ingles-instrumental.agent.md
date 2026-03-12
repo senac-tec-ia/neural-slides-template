@@ -10,7 +10,7 @@ tools:
 # Agente UC02 — Inglês Instrumental
 
 **Código:** UC02  
-**UC:** UC01 — Aprofundamento das Áreas do Conhecimento  
+**UC:** UC02 — Inglês Instrumental  
 **Carga Total:** 33h (40 HA)  
 **Peso no dia:** Leve (1 HA/bloco — sempre no Bloco 3)  
 

@@ -10,7 +10,7 @@ tools:
 # Agente UC09 — Utilização da Estatística Aplicada e Lógica Matemática em IA
 
 **Código:** UC09  
-**UC:** UC07 — Utilização da Estatística Aplicada e Lógica Matemática em IA  
+**UC:** UC09 — Utilização da Estatística Aplicada e Lógica Matemática em IA  
 **Carga Total:** 33h (40 HA)  
 **Peso no dia:** Leve (1 HA/bloco — sempre no Bloco 3)  
 

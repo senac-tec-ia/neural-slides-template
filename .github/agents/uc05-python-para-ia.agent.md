@@ -10,7 +10,7 @@ tools:
 # Agente UC05 — Desenvolvimento de Linguagem Python
 
 **Código:** UC05  
-**UC:** UC03 — Desenvolvimento de Linguagem Python  
+**UC:** UC05 — Desenvolvimento de Linguagem Python  
 **Carga Total:** 67h (80 HA)  
 **Peso no dia:** Pesado (3 HA/bloco — sempre no Bloco 1)  
 

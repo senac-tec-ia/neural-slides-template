@@ -10,7 +10,7 @@ tools:
 # Agente UC06 — Arquitetura de Computadores e GPU
 
 **Código:** UC06  
-**UC:** UC04 — Reconhecimento de Modelos de Arquitetura de Computadores e GPU  
+**UC:** UC06 — Reconhecimento de Modelos de Arquitetura de Computadores e GPU  
 **Carga Total:** 33h (40 HA)  
 **Peso no dia:** Médio (2 HA/bloco)  
 

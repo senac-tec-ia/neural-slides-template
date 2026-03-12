@@ -30,16 +30,27 @@ Esses limites são **diretrizes visuais** — um slide Slidev exibe aproximadame
 |---|---|
 | Linhas de texto corrido | 6-8 linhas |
 | Linhas de código (bloco único) | 12-15 linhas |
-| Blocos de código | 2 (em two-cols) ou 1 (em default) |
+| Blocos de código | **1 por slide em layout `default` — NUNCA 2** |
 | Itens de lista | 5-6 itens |
 | Conceitos distintos | **1 — regra inviolável** |
-| Tabela | 1 tabela de até 5 linhas |
+| Tabela | **1 por slide — NUNCA tabela + código juntos** |
 
 **Sinais de slide sobrecarregado:**
 - Mais de 1 bloco de código em layout `default`
 - Mais de 2 seções (`##`) dentro de um slide
-- Código + tabela no mesmo slide
+- Código + tabela no mesmo slide (PROIBIDO — separar em slides distintos)
+- Duas tabelas no mesmo slide (PROIBIDO — separar em slides distintos)
 - Mais de 2 `<v-click>` empilhados
+
+**Regras de separação obrigatória:**
+- Se um slide precisa de tabela E código, criar 2 slides: um com a tabela, outro com o código.
+- Se um slide precisa de 2 blocos de código, criar 2 slides separados (exceto em `two-cols-text` onde cada coluna tem um bloco).
+- Dois operadores, funções ou conceitos distintos nunca compartilham slide quando estão sendo **introduzidos pela primeira vez** — cada um recebe slide próprio.
+
+**Regra de introdução de conceito único:**
+Quando apresentar um operador (`and`, `or`, `not`, `==`, `!=`, etc.) ou uma palavra-chave pela primeira vez:
+- 1 slide por operador/keyword
+- O slide mostra: nome em inglês (código) + tradução em português + o que faz + 1 exemplo
 - Margem inferior do slide claramente estourada no preview
 
 Sempre que identificar um slide sobrecarregado, **acionar o protocolo de expansão** antes de qualquer edição.
@@ -59,7 +70,9 @@ Identificar:
 
 ### Passo 2 — Apresentar proposta ao usuário
 
-Antes de escrever qualquer linha, mostrar:
+Antes de escrever qualquer linha, exibir o resumo da proposta em texto e em seguida **chamar o tool `ask_questions`** para coletar a decisão do usuário via seleção interativa — nunca como texto simples.
+
+Exibir primeiro:
 
 ```
 ## Proposta de Expansão — Slide N: [Título]
@@ -74,17 +87,16 @@ Este slide tem conteúdo para [X] slides. Proposta:
   - Cobre: [o quê]
   - Layout: [layout sugerido]
 
-[**Slide N-c (opcional — complemento sugerido):**]
-  - Poderia incluir: [sugestão de conteúdo novo que reforçaria o tema]
-
-Opcoes:
-A) Aprovar a proposta
-B) Ajustar os cortes (indique como)
-C) Incluir o complemento sugerido
-D) Reduzir para apenas [X-1] slides
-
-> Sua decisão:
+[**Slide N-c (opcional):** poderia incluir [sugestão de complemento]]
 ```
+
+Depois **chamar `ask_questions`** com uma única pergunta, header `"Expansão"`, e as opções:
+- `Aprovar a proposta`
+- `Ajustar os cortes` (com `allowFreeformInput: true`)
+- `Incluir o complemento sugerido`
+- `Reduzir para apenas [X-1] slides`
+
+Aguardar a resposta antes de qualquer escrita.
 
 ### Passo 3 — Aguardar aprovação. Não escrever nada antes.
 
@@ -125,7 +137,9 @@ Revisa `slides.md` slide a slide, propondo opções de decisão para cada slide.
 
 #### Passo 2 — Apresentar slide por slide
 
-Para cada slide, mostrar:
+Para cada slide:
+
+1. Mostrar o diagnóstico em texto:
 
 ```
 ---
@@ -135,24 +149,25 @@ Para cada slide, mostrar:
 [3-5 linhas do conteúdo atual]
 
 **Diagnóstico de densidade:** [dentro dos limites / sobrecarregado — N conceitos detectados]
-
-**Opções:**
-A) Manter como está
-B) Simplificar linguagem (reduzir para nível ~14 anos)
-C) Aprofundar teoria (adicionar exemplo, citação ou analogia)
-D) Converter para `[DEBATE]` (reformular como pergunta aberta)
-E) Inserir slide de scaffold antes (slide intermediário para reduzir curva)
-F) **Expandir em múltiplos slides** (quando sobrecarregado — aciona Protocolo de Expansão)
-G) [opção customizada baseada no conteúdo específico do slide]
-
-> Sua escolha para o slide N:
 ```
 
-#### Passo 3 — Aguardar resposta
+2. Em seguida, **chamar o tool `ask_questions`** com uma única pergunta — nunca apresentar as opções como lista de texto.
 
-Quando o usuário responder, confirmar a escolha e perguntar "Próximo slide?" antes de avançar.
+   - `header`: `"Slide N"` (ex: `"Slide 3"`)
+   - `question`: `"O que fazer com o Slide N — [Título]?"`
+   - `options` (sempre estas, adaptando G ao contexto do slide):
+     - `Manter como está`
+     - `Simplificar linguagem` (description: `"Reduzir para nível ~14 anos"`)
+     - `Aprofundar teoria` (description: `"Adicionar exemplo, citação ou analogia"`)
+     - `Converter para [DEBATE]` (description: `"Reformular como pergunta aberta"`)
+     - `Inserir scaffold antes` (description: `"Slide intermediário para reduzir curva"`)
+     - `Expandir em múltiplos slides` (description: `"Aciona Protocolo de Expansão — somente se sobrecarregado"`)
+   - Se houver opção customizada relevante para o slide específico, substituir a menos adequada das fixas por ela.
+   - `allowFreeformInput: true` para aceitar instrução livre.
 
-#### Passo 4 — Emitir relatório de decisões
+3. Aguardar a resposta. Confirmar a escolha em uma linha e perguntar "Próximo slide?" antes de avançar.
+
+#### Passo 3 — Emitir relatório de decisões
 
 Ao final de todos os slides, emitir:
 
